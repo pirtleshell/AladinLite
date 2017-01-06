@@ -53,23 +53,7 @@ Sesame.resolve(objectName, callbackFunctionSuccess, callbackFunctionError)
 }
 ```
 
-- [ ] `nph-aladin.pl` which retrieves available surveys. [The current list](http://aladin.u-strasbg.fr/java/nph-aladin.pl?frame=aladinLiteDic).
-```js
-// returns an array of objects that look like this
-{
-   "id": "P/AKARI/FIS/Color",
-   "description": "AKARI Far-infrared All-Sky Survey - color composition WideL/WideS/N60",
-   "url": "http://alasky.u-strasbg.fr/AKARI-FIS/ColorLSN60", // this needs to be https
-   "copyright": "ISAS/JAXA",
- "copyrightUrl": "http://www.ir.isas.jaxa.jp/AKARI/Archive/Images/FIS_AllSkyMap/",
-   "name": "AKARI Color (WideL-WideS-N60)",
-   "treePath": "Image/Infrared/AKARI-FIS",
-   "order": "04-05-00",
-   "maxOrder": 5,
-   "frame": "equatorial",
-   "format": "jpeg"
-}
-```
+- [ ] `nph-aladin.pl` which retrieves available surveys. [The original list](http://aladin.u-strasbg.fr/java/nph-aladin.pl?frame=aladinLiteDic). A live SSL version is available [here](https://laniakean.com/data/nph-aladin.json).
 
 - [ ] default surveys in `HpxImageSurvey.js`
 

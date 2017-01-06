@@ -24,6 +24,7 @@
 var cds = cds || {};
 
 var A = A || {};
+
 /*
     json2.js
     2012-10-08
@@ -509,7 +510,8 @@ if (typeof JSON !== 'object') {
             throw new SyntaxError('JSON.parse');
         };
     }
-}());// Copyright 2013 - UDS/CNRS
+}());
+// Copyright 2013 - UDS/CNRS
 // The Aladin Lite program is distributed under the terms
 // of the GNU General Public License version 3.
 //
@@ -554,6 +556,7 @@ Logger.log = function(action, params) {
     }
 
 };
+
 /*!
  * jQuery Mousewheel 3.1.13
  *
@@ -775,6 +778,7 @@ Logger.log = function(action, params) {
     }
 
 }));
+
 // requestAnimationFrame() shim by Paul Irish
 // http://paulirish.com/2011/requestanimationframe-for-smart-animating/
 window.requestAnimFrame = (function() {
@@ -786,7 +790,8 @@ window.requestAnimFrame = (function() {
 			function(/* function */ callback, /* DOMElement */ element){
 				window.setTimeout(callback, 1000 / 60);
 			};
-})();// stats.js r6 - http://github.com/mrdoob/stats.js
+})();
+// stats.js r6 - http://github.com/mrdoob/stats.js
 var Stats=function(){function s(a,g,d){var f,c,e;for(c=0;c<30;c++)for(f=0;f<73;f++)e=(f+c*74)*4,a[e]=a[e+4],a[e+1]=a[e+5],a[e+2]=a[e+6];for(c=0;c<30;c++)e=(73+c*74)*4,c<g?(a[e]=b[d].bg.r,a[e+1]=b[d].bg.g,a[e+2]=b[d].bg.b):(a[e]=b[d].fg.r,a[e+1]=b[d].fg.g,a[e+2]=b[d].fg.b)}var r=0,t=2,g,u=0,j=(new Date).getTime(),F=j,v=j,l=0,w=1E3,x=0,k,d,a,m,y,n=0,z=1E3,A=0,f,c,o,B,p=0,C=1E3,D=0,h,i,q,E,b={fps:{bg:{r:16,g:16,b:48},fg:{r:0,g:255,b:255}},ms:{bg:{r:16,g:48,b:16},fg:{r:0,g:255,b:0}},mb:{bg:{r:48,g:16,
 b:26},fg:{r:255,g:0,b:128}}};g=document.createElement("div");g.style.cursor="pointer";g.style.width="80px";g.style.opacity="0.9";g.style.zIndex="10001";g.addEventListener("click",function(){r++;r==t&&(r=0);k.style.display="none";f.style.display="none";h.style.display="none";switch(r){case 0:k.style.display="block";break;case 1:f.style.display="block";break;case 2:h.style.display="block"}},!1);k=document.createElement("div");k.style.backgroundColor="rgb("+Math.floor(b.fps.bg.r/2)+","+Math.floor(b.fps.bg.g/
 2)+","+Math.floor(b.fps.bg.b/2)+")";k.style.padding="2px 0px 3px 0px";g.appendChild(k);d=document.createElement("div");d.style.fontFamily="Helvetica, Arial, sans-serif";d.style.textAlign="left";d.style.fontSize="9px";d.style.color="rgb("+b.fps.fg.r+","+b.fps.fg.g+","+b.fps.fg.b+")";d.style.margin="0px 0px 1px 3px";d.innerHTML='<span style="font-weight:bold">FPS</span>';k.appendChild(d);a=document.createElement("canvas");a.width=74;a.height=30;a.style.display="block";a.style.marginLeft="3px";k.appendChild(a);
@@ -796,7 +801,9 @@ m=a.getContext("2d");m.fillStyle="rgb("+b.fps.bg.r+","+b.fps.bg.g+","+b.fps.bg.b
 h.appendChild(i);a=document.createElement("canvas");a.width=74;a.height=30;a.style.display="block";a.style.marginLeft="3px";h.appendChild(a);q=a.getContext("2d");q.fillStyle="#301010";q.fillRect(0,0,a.width,a.height);E=q.getImageData(0,0,a.width,a.height);return{domElement:g,update:function(){u++;j=(new Date).getTime();n=j-F;z=Math.min(z,n);A=Math.max(A,n);s(B.data,Math.min(30,30-n/200*30),"ms");c.innerHTML='<span style="font-weight:bold">'+n+" MS</span> ("+z+"-"+A+")";o.putImageData(B,0,0);F=j;if(j>
 v+1E3){l=Math.round(u*1E3/(j-v));w=Math.min(w,l);x=Math.max(x,l);s(y.data,Math.min(30,30-l/100*30),"fps");d.innerHTML='<span style="font-weight:bold">'+l+" FPS</span> ("+w+"-"+x+")";m.putImageData(y,0,0);if(t==3)p=performance.memory.usedJSHeapSize*9.54E-7,C=Math.min(C,p),D=Math.max(D,p),s(E.data,Math.min(30,30-p/2),"mb"),i.innerHTML='<span style="font-weight:bold">'+Math.round(p)+" MB</span> ("+Math.round(C)+"-"+Math.round(D)+")",q.putImageData(E,0,0);v=j;u=0}}}};
 
-Constants={},Constants.PI=Math.PI,Constants.C_PR=Math.PI/180,Constants.VLEV=2,Constants.EPS=1e-7,Constants.c=.105,Constants.LN10=Math.log(10),Constants.PIOVER2=Math.PI/2,Constants.TWOPI=2*Math.PI,Constants.TWOTHIRD=2/3,Constants.ARCSECOND_RADIAN=484813681109536e-20,SpatialVector=function(){function t(t,s,i){"use strict";this.x=t,this.y=s,this.z=i,this.ra_=0,this.dec_=0,this.okRaDec_=!1}return t.prototype.setXYZ=function(t,s,i){this.x=t,this.y=s,this.z=i,this.okRaDec_=!1},t.prototype.length=function(){"use strict";return Math.sqrt(this.lengthSquared())},t.prototype.lengthSquared=function(){"use strict";return this.x*this.x+this.y*this.y+this.z*this.z},t.prototype.normalized=function(){"use strict";var t=this.length();this.x/=t,this.y/=t,this.z/=t},t.prototype.set=function(t,s){"use strict";this.ra_=t,this.dec_=s,this.okRaDec_=!0,this.updateXYZ()},t.prototype.angle=function(t){"use strict";var s=this.y*t.z-this.z*t.y,i=this.z*t.x-this.x*t.z,n=this.x*t.y-this.y*t.x,a=Math.sqrt(s*s+i*i+n*n);return Math.abs(Math.atan2(a,dot(t)))},t.prototype.get=function(){"use strict";return[x,y,z]},t.prototype.toString=function(){"use strict";return"SpatialVector["+this.x+", "+this.y+", "+this.z+"]"},t.prototype.cross=function(s){"use strict";return new t(this.y*s.z-s.y*this.z,this.z*s.x-s.z*this.x,this.x*s.y-s.x()*this.y)},t.prototype.equal=function(t){"use strict";return this.x==t.x&&this.y==t.y&&this.z==t.z()?!0:!1},t.prototype.mult=function(s){"use strict";return new t(s*this.x,s*this.y,s*this.z)},t.prototype.dot=function(t){"use strict";return this.x*t.x+this.y*t.y+this.z*t.z},t.prototype.add=function(s){"use strict";return new t(this.x+s.x,this.y+s.y,this.z+s.z)},t.prototype.sub=function(s){"use strict";return new t(this.x-s.x,this.y-s.y,this.z-s.z)},t.prototype.dec=function(){"use strict";return this.okRaDec_||(this.normalized(),this.updateRaDec()),this.dec_},t.prototype.ra=function(){"use strict";return this.okRaDec_||(this.normalized(),this.updateRaDec()),this.ra_},t.prototype.updateXYZ=function(){"use strict";var t=Math.cos(this.dec_*Constants.C_PR);this.x=Math.cos(this.ra_*Constants.C_PR)*t,this.y=Math.sin(this.ra_*Constants.C_PR)*t,this.z=Math.sin(this.dec_*Constants.C_PR)},t.prototype.updateRaDec=function(){"use strict";this.dec_=Math.asin(this.z)/Constants.C_PR;var t=Math.cos(this.dec_*Constants.C_PR);this.ra_=t>Constants.EPS||-Constants.EPS>t?this.y>Constants.EPS||this.y<-Constants.EPS?0>this.y?360-Math.acos(this.x/t)/Constants.C_PR:Math.acos(this.x/t)/Constants.C_PR:0>this.x?180:0:0,this.okRaDec_=!0},t.prototype.toRaRadians=function(){"use strict";var t=0;return(0!=this.x||0!=this.y)&&(t=Math.atan2(this.y,this.x)),0>t&&(t+=2*Math.PI),t},t.prototype.toDeRadians=function(){var t=z/this.length(),s=Math.acos(t);return Math.PI/2-s},t}(),AngularPosition=function(){return AngularPosition=function(t,s){"use strict";this.theta=t,this.phi=s},AngularPosition.prototype.toString=function(){"use strict";return"theta: "+this.theta+", phi: "+this.phi},AngularPosition}(),LongRangeSetBuilder=function(){function t(){this.items=[]}return t.prototype.appendRange=function(t,s){for(var i=t;s>=i;i++)i in this.items||this.items.push(i)},t}(),HealpixIndex=function(){function t(t){"use strict";this.nside=t}return t.NS_MAX=8192,t.ORDER_MAX=13,t.NSIDELIST=[1,2,4,8,16,32,64,128,256,512,1024,2048,4096,8192],t.JRLL=[2,2,2,2,3,3,3,3,4,4,4,4],t.JPLL=[1,3,5,7,0,2,4,6,1,3,5,7],t.XOFFSET=[-1,-1,0,1,1,1,0,-1],t.YOFFSET=[0,1,1,1,0,-1,-1,-1],t.FACEARRAY=[[8,9,10,11,-1,-1,-1,-1,10,11,8,9],[5,6,7,4,8,9,10,11,9,10,11,8],[-1,-1,-1,-1,5,6,7,4,-1,-1,-1,-1],[4,5,6,7,11,8,9,10,11,8,9,10],[0,1,2,3,4,5,6,7,8,9,10,11],[1,2,3,0,0,1,2,3,5,6,7,4],[-1,-1,-1,-1,7,4,5,6,-1,-1,-1,-1],[3,0,1,2,3,0,1,2,4,5,6,7],[2,3,0,1,-1,-1,-1,-1,0,1,2,3]],t.SWAPARRAY=[[0,0,0,0,0,0,0,0,3,3,3,3],[0,0,0,0,0,0,0,0,6,6,6,6],[0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,5,5,5,5],[0,0,0,0,0,0,0,0,0,0,0,0],[5,5,5,5,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0],[6,6,6,6,0,0,0,0,0,0,0,0],[3,3,3,3,0,0,0,0,0,0,0,0]],t.Z0=Constants.TWOTHIRD,t.prototype.init=function(){"use strict";var s=256;this.ctab=Array(s),this.utab=Array(s);for(var i=0;256>i;++i)this.ctab[i]=1&i|(2&i)<<7|(4&i)>>1|(8&i)<<6|(16&i)>>2|(32&i)<<5|(64&i)>>3|(128&i)<<4,this.utab[i]=1&i|(2&i)<<1|(4&i)<<2|(8&i)<<3|(16&i)<<4|(32&i)<<5|(64&i)<<6|(128&i)<<7;this.nl2=2*this.nside,this.nl3=3*this.nside,this.nl4=4*this.nside,this.npface=this.nside*this.nside,this.ncap=2*this.nside*(this.nside-1),this.npix=12*this.npface,this.fact2=4/this.npix,this.fact1=(this.nside<<1)*this.fact2,this.order=t.nside2order(this.nside)},t.calculateNSide=function(s){for(var i=0,n=s*s,a=180/Constants.PI,e=3600*3600*4*Constants.PI*a*a,h=Utils.castToInt(e/n),r=h/12,o=Math.sqrt(r),c=t.NS_MAX,u=0,p=0;t.NSIDELIST.length>p;p++)if(c>=Math.abs(o-t.NSIDELIST[p])&&(c=Math.abs(o-t.NSIDELIST[p]),i=t.NSIDELIST[p],u=p),o>i&&t.NS_MAX>o&&(i=t.NSIDELIST[u+1]),o>t.NS_MAX)return console.log("nside cannot be bigger than "+t.NS_MAX),t.NS_MAX;return i},t.nside2order=function(s){"use strict";return(s&s-1)>0?-1:Utils.castToInt(t.log2(s))},t.log2=function(t){"use strict";return Math.log(t)/Math.log(2)},t.prototype.ang2pix_nest=function(s,i){"use strict";var n,a,e,h,r,o,c,u,p,l,d,f,I;if(i>=Constants.TWOPI&&(i-=Constants.TWOPI),0>i&&(i+=Constants.TWOPI),s>Constants.PI||0>s)throw{name:"Illegal argument",message:"theta must be between 0 and "+Constants.PI};if(i>Constants.TWOPI||0>i)throw{name:"Illegal argument",message:"phi must be between 0 and "+Constants.TWOPI};if(a=Math.cos(s),e=Math.abs(a),h=i/Constants.PIOVER2,t.Z0>=e){var M=this.nside*(.5+h),y=this.nside*.75*a,u=M-y,p=M+y;o=u>>this.order,c=p>>this.order,d=o==c?4==o?4:o+4:c>o?o:c+8,f=Utils.castToInt(p&this.nside-1),I=Utils.castToInt(this.nside-(u&this.nside-1)-1)}else{l=Utils.castToInt(h),l>=4&&(l=3),r=h-l;var g=this.nside*Math.sqrt(3*(1-e));u=Utils.castToInt(r*g),p=Utils.castToInt((1-r)*g),u=Math.min(t.NS_MAX-1,u),p=Math.min(t.NS_MAX-1,p),a>=0?(d=l,f=Utils.castToInt(this.nside-p-1),I=Utils.castToInt(this.nside-u-1)):(d=l+8,f=u,I=p)}return n=this.xyf2nest(f,I,d)},t.prototype.xyf2nest=function(t,s,i){"use strict";return(i<<2*this.order)+(this.utab[255&t]|this.utab[255&t>>8]<<16|this.utab[255&t>>16]<<32|this.utab[255&t>>24]<<48|this.utab[255&s]<<1|this.utab[255&s>>8]<<17|this.utab[255&s>>16]<<33|this.utab[255&s>>24]<<49)},t.prototype.nest2xyf=function(t){"use strict";var s={};s.face_num=t>>2*this.order;var i=t&this.npface-1,n=(93823560581120&i)>>16|(614882086624428e4&i)>>31|21845&i|(1431633920&i)>>15;return s.ix=this.ctab[255&n]|this.ctab[255&n>>8]<<4|this.ctab[255&n>>16]<<16|this.ctab[255&n>>24]<<20,i>>=1,n=(93823560581120&i)>>16|(614882086624428e4&i)>>31|21845&i|(1431633920&i)>>15,s.iy=this.ctab[255&n]|this.ctab[255&n>>8]<<4|this.ctab[255&n>>16]<<16|this.ctab[255&n>>24]<<20,s},t.prototype.pix2ang_nest=function(s){"use strict";if(0>s||s>this.npix-1)throw{name:"Illegal argument",message:"ipix out of range"};var i,n,a,e=this.nest2xyf(s),h=e.ix,r=e.iy,o=e.face_num,c=(t.JRLL[o]<<this.order)-h-r-1;this.nside>c?(i=c,n=1-i*i*this.fact2,a=0):c>this.nl3?(i=this.nl4-c,n=i*i*this.fact2-1,a=0):(i=this.nside,n=(this.nl2-c)*this.fact1,a=1&c-this.nside);var u=Math.acos(n),p=(t.JPLL[o]*i+h-r+1+a)/2;p>this.nl4&&(p-=this.nl4),1>p&&(p+=this.nl4);var l=(p-.5*(a+1))*(Constants.PIOVER2/i);return{theta:u,phi:l}},t.nside2Npix=function(s){"use strict";if(0>s||(s&-s)!=s||s>t.NS_MAX)throw{name:"Illegal argument",message:"nside should be >0, power of 2, <"+t.NS_MAX};var i=12*s*s;return i},t.prototype.xyf2ring=function(s,i,n){"use strict";var a,e,h,r=t.JRLL[n]*this.nside-s-i-1;this.nside>r?(a=r,h=2*a*(a-1),e=0):r>3*this.nside?(a=this.nl4-r,h=this.npix-2*(a+1)*a,e=0):(a=this.nside,h=this.ncap+(r-this.nside)*this.nl4,e=1&r-this.nside);var o=(t.JPLL[n]*a+s-i+1+e)/2;return o>this.nl4?o-=this.nl4:1>o&&(o+=this.nl4),h+o-1},t.prototype.nest2ring=function(t){"use strict";var s=this.nest2xyf(t),i=this.xyf2ring(s.ix,s.iy,s.face_num);return i},t.prototype.corners_nest=function(t,s){"use strict";var i=this.nest2ring(t);return this.corners_ring(i,s)},t.prototype.pix2ang_ring=function(t){"use strict";var s,i,n,a,e,h,r,o,c;if(0>t||t>this.npix-1)throw{name:"Illegal argument",message:"ipix out of range"};return h=t+1,this.ncap>=h?(o=h/2,c=Utils.castToInt(o),n=Utils.castToInt(Math.sqrt(o-Math.sqrt(c)))+1,a=h-2*n*(n-1),s=Math.acos(1-n*n*this.fact2),i=(a-.5)*Constants.PI/(2*n)):this.npix-this.ncap>t?(e=t-this.ncap,n=e/this.nl4+this.nside,a=e%this.nl4+1,r=(1&n+this.nside)>0?1:.5,s=Math.acos((this.nl2-n)*this.fact1),i=(a-r)*Constants.PI/this.nl2):(e=this.npix-t,n=Utils.castToInt(.5*(1+Math.sqrt(2*e-1))),a=4*n+1-(e-2*n*(n-1)),s=Math.acos(-1+Math.pow(n,2)*this.fact2),i=(a-.5)*Constants.PI/(2*n)),[s,i]},t.prototype.ring=function(t){"use strict";var s,i,n=0,a=t+1,e=0;return this.ncap>=a?(i=a/2,e=Utils.castToInt(i),n=Utils.castToInt(Math.sqrt(i-Math.sqrt(e)))+1):this.nl2*(5*this.nside+1)>=a?(s=Utils.castToInt(a-this.ncap-1),n=Utils.castToInt(s/this.nl4+this.nside)):(s=this.npix-a+1,i=s/2,e=Utils.castToInt(i),n=Utils.castToInt(Math.sqrt(i-Math.sqrt(e)))+1,n=this.nl4-n),n},t.prototype.integration_limits_in_costh=function(t){"use strict";var s,i,n,a;return a=1*this.nside,this.nside>=t?(i=1-Math.pow(t,2)/3/this.npface,n=1-Math.pow(t-1,2)/3/this.npface,s=t==this.nside?2*(this.nside-1)/3/a:1-Math.pow(t+1,2)/3/this.npface):this.nl3>t?(i=2*(2*this.nside-t)/3/a,n=2*(2*this.nside-t+1)/3/a,s=2*(2*this.nside-t-1)/3/a):(n=t==this.nl3?2*(-this.nside+1)/3/a:-1+Math.pow(4*this.nside-t+1,2)/3/this.npface,s=-1+Math.pow(this.nl4-t-1,2)/3/this.npface,i=-1+Math.pow(this.nl4-t,2)/3/this.npface),[n,i,s]},t.prototype.pixel_boundaries=function(t,s,i,n){var a,e,h,r,o,c,u,p,l=1*this.nside;if(Math.abs(n)>=1-1/3/this.npface)return u=i*Constants.PIOVER2,p=(i+1)*Constants.PIOVER2,[u,p];if(1.5*n>=1)a=Math.sqrt(3*(1-n)),e=1/l/a,h=s,r=h-1,o=t-s,c=o+1,u=Constants.PIOVER2*(Math.max(r*e,1-c*e)+i),p=Constants.PIOVER2*(Math.min(1-o*e,h*e)+i);else if(1.5*n>-1){var d=.5*(1-1.5*n),f=d+1,I=this.nside+t%2;h=s-(I-t)/2,r=h-1,o=(I+t)/2-s,c=o+1,u=Constants.PIOVER2*(Math.max(f-c/l,-d+r/l)+i),p=Constants.PIOVER2*(Math.min(f-o/l,-d+h/l)+i)}else{a=Math.sqrt(3*(1+n)),e=1/l/a;var M=2*this.nside;h=t-M+s,r=h-1,o=M-s,c=o+1,u=Constants.PIOVER2*(Math.max(1-(M-r)*e,(M-c)*e)+i),p=Constants.PIOVER2*(Math.min(1-(M-h)*e,(M-o)*e)+i)}return[u,p]},t.vector=function(t,s){"use strict";var i=1*Math.sin(t)*Math.cos(s),n=1*Math.sin(t)*Math.sin(s),a=1*Math.cos(t);return new SpatialVector(i,n,a)},t.prototype.corners_ring=function(s,i){"use strict";var n=2*i+2,a=Array(n),e=this.pix2ang_ring(s),h=Math.cos(e[0]),r=e[0],o=e[1],c=Utils.castToInt(o/Constants.PIOVER2),u=this.ring(s),p=Math.min(u,Math.min(this.nside,this.nl4-u)),l=0,d=Constants.PIOVER2/p;l=u>=this.nside&&this.nl3>=u?Utils.castToInt(o/d+u%2/2)+1:Utils.castToInt(o/d)+1,l-=c*p;var f=n/2,I=this.integration_limits_in_costh(u),M=Math.acos(I[0]),y=Math.acos(I[2]),g=this.pixel_boundaries(u,l,c,I[0]);if(a[0]=l>p/2?t.vector(M,g[1]):t.vector(M,g[0]),g=this.pixel_boundaries(u,l,c,I[2]),a[f]=l>p/2?t.vector(y,g[1]):t.vector(y,g[0]),1==i){var P=Math.acos(I[1]);g=this.pixel_boundaries(u,l,c,I[1]),a[1]=t.vector(P,g[0]),a[3]=t.vector(P,g[1])}else for(var x=I[2]-I[0],C=x/(i+1),v=1;i>=v;v++)h=I[0]+C*v,r=Math.acos(h),g=this.pixel_boundaries(u,l,c,h),a[v]=t.vector(r,g[0]),a[n-v]=t.vector(r,g[1]);return a},t.vec2Ang=function(t){"use strict";var s=t.z/t.length(),i=Math.acos(s),n=0;return(0!=t.x||0!=t.y)&&(n=Math.atan2(t.y,t.x)),0>n&&(n+=2*Math.PI),[i,n]},t.prototype.queryDisc=function(s,i,n,a){"use strict";if(0>i||i>Constants.PI)throw{name:"Illegal argument",message:"angular radius is in RADIAN and should be in [0,pi]"};var e,h,r,o,c,u,p,l,d,f,I,M,y,g,P,x,C,v,_,R=new LongRangeSetBuilder,T=null,c=i;if(a&&(c+=Constants.PI/this.nl4),T=t.vec2Ang(s),u=T[0],p=T[1],I=this.fact2,M=this.fact1,o=Math.cos(u),_=1/Math.sqrt((1-o)*(1+o)),g=u-c,P=u+c,l=Math.cos(c),C=Math.cos(g),e=this.ringAbove(C)+1,x=Math.cos(P),h=this.ringAbove(x),e>h&&0==h&&(h=e),0>=g)for(var m=1;e>m;++m)this.inRing(m,0,Math.PI,R);for(r=e;h>=r;++r)v=this.nside>r?1-r*r*I:this.nl3>=r?(this.nl2-r)*M:-1+(this.nl4-r)*(this.nl4-r)*I,d=(l-v*o)*_,f=1-v*v-d*d,y=Math.atan2(Math.sqrt(f),d),isNaN(y)&&(y=c),this.inRing(r,p,y,R);if(P>=Math.PI)for(var m=h+1;this.nl4>m;++m)this.inRing(m,0,Math.PI,R,!1);var b;if(n){for(var S=R.items,U=[],A=0;S.length>A;A++){var O=this.ring2nest(S[A]);U.indexOf(O)>=0||U.push(O)}b=U}else b=R.items;return b},t.prototype.inRing=function(t,s,i,n,a){"use strict";var e,h,r,o,c=!1,u=!1,p=1e-12,l=0,d=0,f=0,I=0,M=(s-i)%Constants.TWOPI-p,y=s+i+p,g=(s+i)%Constants.TWOPI+p;if(p>Math.abs(i-Constants.PI)&&(c=!0),t>=this.nside&&this.nl3>=t?(d=t-this.nside+1,r=this.ncap+this.nl4*(d-1),o=r+this.nl4-1,e=d%2,h=this.nl4):(this.nside>t?(d=t,r=2*d*(d-1),o=r+4*d-1):(d=4*this.nside-t,r=this.npix-2*d*(d+1),o=r+4*d-1),h=4*d,e=1),c)return n.appendRange(r,o),void 0;if(l=e/2,a)f=Math.round(h*M/Constants.TWOPI-l),I=Math.round(h*y/Constants.TWOPI-l),f%=h,I>h&&(I%=h);else{if(f=Math.ceil(h*M/Constants.TWOPI-l),I=Utils.castToInt(h*g/Constants.TWOPI-l),f>I&&1==t&&(I=Utils.castToInt(h*y/Constants.TWOPI-l)),f==I+1&&(f=I),1==f-I&&Constants.PI>i*h)return console.log("the interval is too small and avay from center"),void 0;f=Math.min(f,h-1),I=Math.max(I,0)}if(f>I&&(u=!0),u)f+=r,I+=r,n.appendRange(r,I),n.appendRange(f,o);else{if(0>f)return f=Math.abs(f),n.appendRange(r,r+I),n.appendRange(o-f+1,o),void 0;f+=r,I+=r,n.appendRange(f,I)}},t.prototype.ringAbove=function(t){"use strict";var s=Math.abs(t);if(s>Constants.TWOTHIRD){var i=Utils.castToInt(this.nside*Math.sqrt(3*(1-s)));return t>0?i:4*this.nside-i-1}return Utils.castToInt(this.nside*(2-1.5*t))},t.prototype.ring2nest=function(t){"use strict";var s=this.ring2xyf(t);return this.xyf2nest(s.ix,s.iy,s.face_num)},t.prototype.ring2xyf=function(s){"use strict";var i,n,a,e,h={};if(this.ncap>s){i=Utils.castToInt(.5*(1+Math.sqrt(1+2*s))),n=s+1-2*i*(i-1),a=0,e=i,h.face_num=0;var r=n-1;r>=2*i&&(h.face_num=2,r-=2*i),r>=i&&++h.face_num}else if(this.npix-this.ncap>s){var o=s-this.ncap;this.order>=0?(i=(o>>this.order+2)+this.nside,n=(o&this.nl4-1)+1):(i=o/this.nl4+this.nside,n=o%this.nl4+1),a=1&i+this.nside,e=this.nside;var c,u,p=i-this.nside+1,l=this.nl2+2-p;this.order>=0?(c=n-Utils.castToInt(p/2)+this.nside-1>>this.order,u=n-Utils.castToInt(l/2)+this.nside-1>>this.order):(c=(n-Utils.castToInt(p/2)+this.nside-1)/this.nside,u=(n-Utils.castToInt(l/2)+this.nside-1)/this.nside),h.face_num=u==c?4==u?4:Utils.castToInt(u)+4:c>u?Utils.castToInt(u):Utils.castToInt(c)+8}else{var o=this.npix-s;i=Utils.castToInt(.5*(1+Math.sqrt(2*o-1))),n=4*i+1-(o-2*i*(i-1)),a=0,e=i,i=2*this.nl2-i,h.face_num=8;var r=n-1;r>=2*e&&(h.face_num=10,r-=2*e),r>=e&&++h.face_num}var d=i-t.JRLL[h.face_num]*this.nside+1,f=2*n-t.JPLL[h.face_num]*e-a-1;return f>=this.nl2&&(f-=8*this.nside),h.ix=f-d>>1,h.iy=-(f+d)>>1,h},t}(),Utils=function(){},Utils.radecToPolar=function(t,s){return{theta:Math.PI/2-s/180*Math.PI,phi:t/180*Math.PI}},Utils.polarToRadec=function(t,s){return{ra:180*s/Math.PI,dec:180*(Math.PI/2-t)/Math.PI}},Utils.castToInt=function(t){return t>0?Math.floor(t):Math.ceil(t)};//=================================
+
+Constants={},Constants.PI=Math.PI,Constants.C_PR=Math.PI/180,Constants.VLEV=2,Constants.EPS=1e-7,Constants.c=.105,Constants.LN10=Math.log(10),Constants.PIOVER2=Math.PI/2,Constants.TWOPI=2*Math.PI,Constants.TWOTHIRD=2/3,Constants.ARCSECOND_RADIAN=484813681109536e-20,SpatialVector=function(){function t(t,s,i){"use strict";this.x=t,this.y=s,this.z=i,this.ra_=0,this.dec_=0,this.okRaDec_=!1}return t.prototype.setXYZ=function(t,s,i){this.x=t,this.y=s,this.z=i,this.okRaDec_=!1},t.prototype.length=function(){"use strict";return Math.sqrt(this.lengthSquared())},t.prototype.lengthSquared=function(){"use strict";return this.x*this.x+this.y*this.y+this.z*this.z},t.prototype.normalized=function(){"use strict";var t=this.length();this.x/=t,this.y/=t,this.z/=t},t.prototype.set=function(t,s){"use strict";this.ra_=t,this.dec_=s,this.okRaDec_=!0,this.updateXYZ()},t.prototype.angle=function(t){"use strict";var s=this.y*t.z-this.z*t.y,i=this.z*t.x-this.x*t.z,n=this.x*t.y-this.y*t.x,a=Math.sqrt(s*s+i*i+n*n);return Math.abs(Math.atan2(a,dot(t)))},t.prototype.get=function(){"use strict";return[x,y,z]},t.prototype.toString=function(){"use strict";return"SpatialVector["+this.x+", "+this.y+", "+this.z+"]"},t.prototype.cross=function(s){"use strict";return new t(this.y*s.z-s.y*this.z,this.z*s.x-s.z*this.x,this.x*s.y-s.x()*this.y)},t.prototype.equal=function(t){"use strict";return this.x==t.x&&this.y==t.y&&this.z==t.z()?!0:!1},t.prototype.mult=function(s){"use strict";return new t(s*this.x,s*this.y,s*this.z)},t.prototype.dot=function(t){"use strict";return this.x*t.x+this.y*t.y+this.z*t.z},t.prototype.add=function(s){"use strict";return new t(this.x+s.x,this.y+s.y,this.z+s.z)},t.prototype.sub=function(s){"use strict";return new t(this.x-s.x,this.y-s.y,this.z-s.z)},t.prototype.dec=function(){"use strict";return this.okRaDec_||(this.normalized(),this.updateRaDec()),this.dec_},t.prototype.ra=function(){"use strict";return this.okRaDec_||(this.normalized(),this.updateRaDec()),this.ra_},t.prototype.updateXYZ=function(){"use strict";var t=Math.cos(this.dec_*Constants.C_PR);this.x=Math.cos(this.ra_*Constants.C_PR)*t,this.y=Math.sin(this.ra_*Constants.C_PR)*t,this.z=Math.sin(this.dec_*Constants.C_PR)},t.prototype.updateRaDec=function(){"use strict";this.dec_=Math.asin(this.z)/Constants.C_PR;var t=Math.cos(this.dec_*Constants.C_PR);this.ra_=t>Constants.EPS||-Constants.EPS>t?this.y>Constants.EPS||this.y<-Constants.EPS?0>this.y?360-Math.acos(this.x/t)/Constants.C_PR:Math.acos(this.x/t)/Constants.C_PR:0>this.x?180:0:0,this.okRaDec_=!0},t.prototype.toRaRadians=function(){"use strict";var t=0;return(0!=this.x||0!=this.y)&&(t=Math.atan2(this.y,this.x)),0>t&&(t+=2*Math.PI),t},t.prototype.toDeRadians=function(){var t=z/this.length(),s=Math.acos(t);return Math.PI/2-s},t}(),AngularPosition=function(){return AngularPosition=function(t,s){"use strict";this.theta=t,this.phi=s},AngularPosition.prototype.toString=function(){"use strict";return"theta: "+this.theta+", phi: "+this.phi},AngularPosition}(),LongRangeSetBuilder=function(){function t(){this.items=[]}return t.prototype.appendRange=function(t,s){for(var i=t;s>=i;i++)i in this.items||this.items.push(i)},t}(),HealpixIndex=function(){function t(t){"use strict";this.nside=t}return t.NS_MAX=8192,t.ORDER_MAX=13,t.NSIDELIST=[1,2,4,8,16,32,64,128,256,512,1024,2048,4096,8192],t.JRLL=[2,2,2,2,3,3,3,3,4,4,4,4],t.JPLL=[1,3,5,7,0,2,4,6,1,3,5,7],t.XOFFSET=[-1,-1,0,1,1,1,0,-1],t.YOFFSET=[0,1,1,1,0,-1,-1,-1],t.FACEARRAY=[[8,9,10,11,-1,-1,-1,-1,10,11,8,9],[5,6,7,4,8,9,10,11,9,10,11,8],[-1,-1,-1,-1,5,6,7,4,-1,-1,-1,-1],[4,5,6,7,11,8,9,10,11,8,9,10],[0,1,2,3,4,5,6,7,8,9,10,11],[1,2,3,0,0,1,2,3,5,6,7,4],[-1,-1,-1,-1,7,4,5,6,-1,-1,-1,-1],[3,0,1,2,3,0,1,2,4,5,6,7],[2,3,0,1,-1,-1,-1,-1,0,1,2,3]],t.SWAPARRAY=[[0,0,0,0,0,0,0,0,3,3,3,3],[0,0,0,0,0,0,0,0,6,6,6,6],[0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,5,5,5,5],[0,0,0,0,0,0,0,0,0,0,0,0],[5,5,5,5,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0],[6,6,6,6,0,0,0,0,0,0,0,0],[3,3,3,3,0,0,0,0,0,0,0,0]],t.Z0=Constants.TWOTHIRD,t.prototype.init=function(){"use strict";var s=256;this.ctab=Array(s),this.utab=Array(s);for(var i=0;256>i;++i)this.ctab[i]=1&i|(2&i)<<7|(4&i)>>1|(8&i)<<6|(16&i)>>2|(32&i)<<5|(64&i)>>3|(128&i)<<4,this.utab[i]=1&i|(2&i)<<1|(4&i)<<2|(8&i)<<3|(16&i)<<4|(32&i)<<5|(64&i)<<6|(128&i)<<7;this.nl2=2*this.nside,this.nl3=3*this.nside,this.nl4=4*this.nside,this.npface=this.nside*this.nside,this.ncap=2*this.nside*(this.nside-1),this.npix=12*this.npface,this.fact2=4/this.npix,this.fact1=(this.nside<<1)*this.fact2,this.order=t.nside2order(this.nside)},t.calculateNSide=function(s){for(var i=0,n=s*s,a=180/Constants.PI,e=3600*3600*4*Constants.PI*a*a,h=Utils.castToInt(e/n),r=h/12,o=Math.sqrt(r),c=t.NS_MAX,u=0,p=0;t.NSIDELIST.length>p;p++)if(c>=Math.abs(o-t.NSIDELIST[p])&&(c=Math.abs(o-t.NSIDELIST[p]),i=t.NSIDELIST[p],u=p),o>i&&t.NS_MAX>o&&(i=t.NSIDELIST[u+1]),o>t.NS_MAX)return console.log("nside cannot be bigger than "+t.NS_MAX),t.NS_MAX;return i},t.nside2order=function(s){"use strict";return(s&s-1)>0?-1:Utils.castToInt(t.log2(s))},t.log2=function(t){"use strict";return Math.log(t)/Math.log(2)},t.prototype.ang2pix_nest=function(s,i){"use strict";var n,a,e,h,r,o,c,u,p,l,d,f,I;if(i>=Constants.TWOPI&&(i-=Constants.TWOPI),0>i&&(i+=Constants.TWOPI),s>Constants.PI||0>s)throw{name:"Illegal argument",message:"theta must be between 0 and "+Constants.PI};if(i>Constants.TWOPI||0>i)throw{name:"Illegal argument",message:"phi must be between 0 and "+Constants.TWOPI};if(a=Math.cos(s),e=Math.abs(a),h=i/Constants.PIOVER2,t.Z0>=e){var M=this.nside*(.5+h),y=this.nside*.75*a,u=M-y,p=M+y;o=u>>this.order,c=p>>this.order,d=o==c?4==o?4:o+4:c>o?o:c+8,f=Utils.castToInt(p&this.nside-1),I=Utils.castToInt(this.nside-(u&this.nside-1)-1)}else{l=Utils.castToInt(h),l>=4&&(l=3),r=h-l;var g=this.nside*Math.sqrt(3*(1-e));u=Utils.castToInt(r*g),p=Utils.castToInt((1-r)*g),u=Math.min(t.NS_MAX-1,u),p=Math.min(t.NS_MAX-1,p),a>=0?(d=l,f=Utils.castToInt(this.nside-p-1),I=Utils.castToInt(this.nside-u-1)):(d=l+8,f=u,I=p)}return n=this.xyf2nest(f,I,d)},t.prototype.xyf2nest=function(t,s,i){"use strict";return(i<<2*this.order)+(this.utab[255&t]|this.utab[255&t>>8]<<16|this.utab[255&t>>16]<<32|this.utab[255&t>>24]<<48|this.utab[255&s]<<1|this.utab[255&s>>8]<<17|this.utab[255&s>>16]<<33|this.utab[255&s>>24]<<49)},t.prototype.nest2xyf=function(t){"use strict";var s={};s.face_num=t>>2*this.order;var i=t&this.npface-1,n=(93823560581120&i)>>16|(614882086624428e4&i)>>31|21845&i|(1431633920&i)>>15;return s.ix=this.ctab[255&n]|this.ctab[255&n>>8]<<4|this.ctab[255&n>>16]<<16|this.ctab[255&n>>24]<<20,i>>=1,n=(93823560581120&i)>>16|(614882086624428e4&i)>>31|21845&i|(1431633920&i)>>15,s.iy=this.ctab[255&n]|this.ctab[255&n>>8]<<4|this.ctab[255&n>>16]<<16|this.ctab[255&n>>24]<<20,s},t.prototype.pix2ang_nest=function(s){"use strict";if(0>s||s>this.npix-1)throw{name:"Illegal argument",message:"ipix out of range"};var i,n,a,e=this.nest2xyf(s),h=e.ix,r=e.iy,o=e.face_num,c=(t.JRLL[o]<<this.order)-h-r-1;this.nside>c?(i=c,n=1-i*i*this.fact2,a=0):c>this.nl3?(i=this.nl4-c,n=i*i*this.fact2-1,a=0):(i=this.nside,n=(this.nl2-c)*this.fact1,a=1&c-this.nside);var u=Math.acos(n),p=(t.JPLL[o]*i+h-r+1+a)/2;p>this.nl4&&(p-=this.nl4),1>p&&(p+=this.nl4);var l=(p-.5*(a+1))*(Constants.PIOVER2/i);return{theta:u,phi:l}},t.nside2Npix=function(s){"use strict";if(0>s||(s&-s)!=s||s>t.NS_MAX)throw{name:"Illegal argument",message:"nside should be >0, power of 2, <"+t.NS_MAX};var i=12*s*s;return i},t.prototype.xyf2ring=function(s,i,n){"use strict";var a,e,h,r=t.JRLL[n]*this.nside-s-i-1;this.nside>r?(a=r,h=2*a*(a-1),e=0):r>3*this.nside?(a=this.nl4-r,h=this.npix-2*(a+1)*a,e=0):(a=this.nside,h=this.ncap+(r-this.nside)*this.nl4,e=1&r-this.nside);var o=(t.JPLL[n]*a+s-i+1+e)/2;return o>this.nl4?o-=this.nl4:1>o&&(o+=this.nl4),h+o-1},t.prototype.nest2ring=function(t){"use strict";var s=this.nest2xyf(t),i=this.xyf2ring(s.ix,s.iy,s.face_num);return i},t.prototype.corners_nest=function(t,s){"use strict";var i=this.nest2ring(t);return this.corners_ring(i,s)},t.prototype.pix2ang_ring=function(t){"use strict";var s,i,n,a,e,h,r,o,c;if(0>t||t>this.npix-1)throw{name:"Illegal argument",message:"ipix out of range"};return h=t+1,this.ncap>=h?(o=h/2,c=Utils.castToInt(o),n=Utils.castToInt(Math.sqrt(o-Math.sqrt(c)))+1,a=h-2*n*(n-1),s=Math.acos(1-n*n*this.fact2),i=(a-.5)*Constants.PI/(2*n)):this.npix-this.ncap>t?(e=t-this.ncap,n=e/this.nl4+this.nside,a=e%this.nl4+1,r=(1&n+this.nside)>0?1:.5,s=Math.acos((this.nl2-n)*this.fact1),i=(a-r)*Constants.PI/this.nl2):(e=this.npix-t,n=Utils.castToInt(.5*(1+Math.sqrt(2*e-1))),a=4*n+1-(e-2*n*(n-1)),s=Math.acos(-1+Math.pow(n,2)*this.fact2),i=(a-.5)*Constants.PI/(2*n)),[s,i]},t.prototype.ring=function(t){"use strict";var s,i,n=0,a=t+1,e=0;return this.ncap>=a?(i=a/2,e=Utils.castToInt(i),n=Utils.castToInt(Math.sqrt(i-Math.sqrt(e)))+1):this.nl2*(5*this.nside+1)>=a?(s=Utils.castToInt(a-this.ncap-1),n=Utils.castToInt(s/this.nl4+this.nside)):(s=this.npix-a+1,i=s/2,e=Utils.castToInt(i),n=Utils.castToInt(Math.sqrt(i-Math.sqrt(e)))+1,n=this.nl4-n),n},t.prototype.integration_limits_in_costh=function(t){"use strict";var s,i,n,a;return a=1*this.nside,this.nside>=t?(i=1-Math.pow(t,2)/3/this.npface,n=1-Math.pow(t-1,2)/3/this.npface,s=t==this.nside?2*(this.nside-1)/3/a:1-Math.pow(t+1,2)/3/this.npface):this.nl3>t?(i=2*(2*this.nside-t)/3/a,n=2*(2*this.nside-t+1)/3/a,s=2*(2*this.nside-t-1)/3/a):(n=t==this.nl3?2*(-this.nside+1)/3/a:-1+Math.pow(4*this.nside-t+1,2)/3/this.npface,s=-1+Math.pow(this.nl4-t-1,2)/3/this.npface,i=-1+Math.pow(this.nl4-t,2)/3/this.npface),[n,i,s]},t.prototype.pixel_boundaries=function(t,s,i,n){var a,e,h,r,o,c,u,p,l=1*this.nside;if(Math.abs(n)>=1-1/3/this.npface)return u=i*Constants.PIOVER2,p=(i+1)*Constants.PIOVER2,[u,p];if(1.5*n>=1)a=Math.sqrt(3*(1-n)),e=1/l/a,h=s,r=h-1,o=t-s,c=o+1,u=Constants.PIOVER2*(Math.max(r*e,1-c*e)+i),p=Constants.PIOVER2*(Math.min(1-o*e,h*e)+i);else if(1.5*n>-1){var d=.5*(1-1.5*n),f=d+1,I=this.nside+t%2;h=s-(I-t)/2,r=h-1,o=(I+t)/2-s,c=o+1,u=Constants.PIOVER2*(Math.max(f-c/l,-d+r/l)+i),p=Constants.PIOVER2*(Math.min(f-o/l,-d+h/l)+i)}else{a=Math.sqrt(3*(1+n)),e=1/l/a;var M=2*this.nside;h=t-M+s,r=h-1,o=M-s,c=o+1,u=Constants.PIOVER2*(Math.max(1-(M-r)*e,(M-c)*e)+i),p=Constants.PIOVER2*(Math.min(1-(M-h)*e,(M-o)*e)+i)}return[u,p]},t.vector=function(t,s){"use strict";var i=1*Math.sin(t)*Math.cos(s),n=1*Math.sin(t)*Math.sin(s),a=1*Math.cos(t);return new SpatialVector(i,n,a)},t.prototype.corners_ring=function(s,i){"use strict";var n=2*i+2,a=Array(n),e=this.pix2ang_ring(s),h=Math.cos(e[0]),r=e[0],o=e[1],c=Utils.castToInt(o/Constants.PIOVER2),u=this.ring(s),p=Math.min(u,Math.min(this.nside,this.nl4-u)),l=0,d=Constants.PIOVER2/p;l=u>=this.nside&&this.nl3>=u?Utils.castToInt(o/d+u%2/2)+1:Utils.castToInt(o/d)+1,l-=c*p;var f=n/2,I=this.integration_limits_in_costh(u),M=Math.acos(I[0]),y=Math.acos(I[2]),g=this.pixel_boundaries(u,l,c,I[0]);if(a[0]=l>p/2?t.vector(M,g[1]):t.vector(M,g[0]),g=this.pixel_boundaries(u,l,c,I[2]),a[f]=l>p/2?t.vector(y,g[1]):t.vector(y,g[0]),1==i){var P=Math.acos(I[1]);g=this.pixel_boundaries(u,l,c,I[1]),a[1]=t.vector(P,g[0]),a[3]=t.vector(P,g[1])}else for(var x=I[2]-I[0],C=x/(i+1),v=1;i>=v;v++)h=I[0]+C*v,r=Math.acos(h),g=this.pixel_boundaries(u,l,c,h),a[v]=t.vector(r,g[0]),a[n-v]=t.vector(r,g[1]);return a},t.vec2Ang=function(t){"use strict";var s=t.z/t.length(),i=Math.acos(s),n=0;return(0!=t.x||0!=t.y)&&(n=Math.atan2(t.y,t.x)),0>n&&(n+=2*Math.PI),[i,n]},t.prototype.queryDisc=function(s,i,n,a){"use strict";if(0>i||i>Constants.PI)throw{name:"Illegal argument",message:"angular radius is in RADIAN and should be in [0,pi]"};var e,h,r,o,c,u,p,l,d,f,I,M,y,g,P,x,C,v,_,R=new LongRangeSetBuilder,T=null,c=i;if(a&&(c+=Constants.PI/this.nl4),T=t.vec2Ang(s),u=T[0],p=T[1],I=this.fact2,M=this.fact1,o=Math.cos(u),_=1/Math.sqrt((1-o)*(1+o)),g=u-c,P=u+c,l=Math.cos(c),C=Math.cos(g),e=this.ringAbove(C)+1,x=Math.cos(P),h=this.ringAbove(x),e>h&&0==h&&(h=e),0>=g)for(var m=1;e>m;++m)this.inRing(m,0,Math.PI,R);for(r=e;h>=r;++r)v=this.nside>r?1-r*r*I:this.nl3>=r?(this.nl2-r)*M:-1+(this.nl4-r)*(this.nl4-r)*I,d=(l-v*o)*_,f=1-v*v-d*d,y=Math.atan2(Math.sqrt(f),d),isNaN(y)&&(y=c),this.inRing(r,p,y,R);if(P>=Math.PI)for(var m=h+1;this.nl4>m;++m)this.inRing(m,0,Math.PI,R,!1);var b;if(n){for(var S=R.items,U=[],A=0;S.length>A;A++){var O=this.ring2nest(S[A]);U.indexOf(O)>=0||U.push(O)}b=U}else b=R.items;return b},t.prototype.inRing=function(t,s,i,n,a){"use strict";var e,h,r,o,c=!1,u=!1,p=1e-12,l=0,d=0,f=0,I=0,M=(s-i)%Constants.TWOPI-p,y=s+i+p,g=(s+i)%Constants.TWOPI+p;if(p>Math.abs(i-Constants.PI)&&(c=!0),t>=this.nside&&this.nl3>=t?(d=t-this.nside+1,r=this.ncap+this.nl4*(d-1),o=r+this.nl4-1,e=d%2,h=this.nl4):(this.nside>t?(d=t,r=2*d*(d-1),o=r+4*d-1):(d=4*this.nside-t,r=this.npix-2*d*(d+1),o=r+4*d-1),h=4*d,e=1),c)return n.appendRange(r,o),void 0;if(l=e/2,a)f=Math.round(h*M/Constants.TWOPI-l),I=Math.round(h*y/Constants.TWOPI-l),f%=h,I>h&&(I%=h);else{if(f=Math.ceil(h*M/Constants.TWOPI-l),I=Utils.castToInt(h*g/Constants.TWOPI-l),f>I&&1==t&&(I=Utils.castToInt(h*y/Constants.TWOPI-l)),f==I+1&&(f=I),1==f-I&&Constants.PI>i*h)return console.log("the interval is too small and avay from center"),void 0;f=Math.min(f,h-1),I=Math.max(I,0)}if(f>I&&(u=!0),u)f+=r,I+=r,n.appendRange(r,I),n.appendRange(f,o);else{if(0>f)return f=Math.abs(f),n.appendRange(r,r+I),n.appendRange(o-f+1,o),void 0;f+=r,I+=r,n.appendRange(f,I)}},t.prototype.ringAbove=function(t){"use strict";var s=Math.abs(t);if(s>Constants.TWOTHIRD){var i=Utils.castToInt(this.nside*Math.sqrt(3*(1-s)));return t>0?i:4*this.nside-i-1}return Utils.castToInt(this.nside*(2-1.5*t))},t.prototype.ring2nest=function(t){"use strict";var s=this.ring2xyf(t);return this.xyf2nest(s.ix,s.iy,s.face_num)},t.prototype.ring2xyf=function(s){"use strict";var i,n,a,e,h={};if(this.ncap>s){i=Utils.castToInt(.5*(1+Math.sqrt(1+2*s))),n=s+1-2*i*(i-1),a=0,e=i,h.face_num=0;var r=n-1;r>=2*i&&(h.face_num=2,r-=2*i),r>=i&&++h.face_num}else if(this.npix-this.ncap>s){var o=s-this.ncap;this.order>=0?(i=(o>>this.order+2)+this.nside,n=(o&this.nl4-1)+1):(i=o/this.nl4+this.nside,n=o%this.nl4+1),a=1&i+this.nside,e=this.nside;var c,u,p=i-this.nside+1,l=this.nl2+2-p;this.order>=0?(c=n-Utils.castToInt(p/2)+this.nside-1>>this.order,u=n-Utils.castToInt(l/2)+this.nside-1>>this.order):(c=(n-Utils.castToInt(p/2)+this.nside-1)/this.nside,u=(n-Utils.castToInt(l/2)+this.nside-1)/this.nside),h.face_num=u==c?4==u?4:Utils.castToInt(u)+4:c>u?Utils.castToInt(u):Utils.castToInt(c)+8}else{var o=this.npix-s;i=Utils.castToInt(.5*(1+Math.sqrt(2*o-1))),n=4*i+1-(o-2*i*(i-1)),a=0,e=i,i=2*this.nl2-i,h.face_num=8;var r=n-1;r>=2*e&&(h.face_num=10,r-=2*e),r>=e&&++h.face_num}var d=i-t.JRLL[h.face_num]*this.nside+1,f=2*n-t.JPLL[h.face_num]*e-a-1;return f>=this.nl2&&(f-=8*this.nside),h.ix=f-d>>1,h.iy=-(f+d)>>1,h},t}(),Utils=function(){},Utils.radecToPolar=function(t,s){return{theta:Math.PI/2-s/180*Math.PI,phi:t/180*Math.PI}},Utils.polarToRadec=function(t,s){return{ra:180*s/Math.PI,dec:180*(Math.PI/2-t)/Math.PI}},Utils.castToInt=function(t){return t>0?Math.floor(t):Math.ceil(t)};
+//=================================
 //            AstroMath
 //=================================
 
@@ -1085,6 +1092,7 @@ AstroMath.displayMatrix = function(m) {
 
 	return str;
 }
+
 function Projection(lon0, lat0) {
 	this.PROJECTION = Projection.PROJ_TAN;
 	this.ROT = this.tr_oR(lon0, lat0);
@@ -1522,7 +1530,8 @@ Projection.prototype = {
 
 		return [ ra, dec ];
 	}
-}//=================================
+}
+//=================================
 // Class Coo
 //=================================
 
@@ -1972,6 +1981,7 @@ Numbers.toSexagesimal = function(num, prec, plus) {
 			return sign+Numbers.format(n, 1);
 	}
 };
+
 // Generated by CoffeeScript 1.6.3
 (function() {
   var Base, BinaryTable, CompressedImage, DataUnit, Decompress, FITS, HDU, Header, HeaderVerify, Image, ImageUtils, Parser, Table, Tabular, _ref, _ref1,
@@ -3685,6 +3695,7 @@ Numbers.toSexagesimal = function(num, prec, plus) {
   this.astro.FITS.HDU = HDU;
 
 }).call(this);
+
 // Copyright 2013 - UDS/CNRS
 // The Aladin Lite program is distributed under the terms
 // of the GNU General Public License version 3.
@@ -3761,6 +3772,7 @@ CooConversion = (function() {
     };
     return CooConversion;
 })();
+
 // Copyright 2013 - UDS/CNRS
 // The Aladin Lite program is distributed under the terms
 // of the GNU General Public License version 3.
@@ -3856,6 +3868,7 @@ Sesame = (function() {
     return Sesame;
 })();
 
+
 // Copyright 2013 - UDS/CNRS
 // The Aladin Lite program is distributed under the terms
 // of the GNU General Public License version 3.
@@ -3935,6 +3948,7 @@ HealpixCache = (function() {
     return HealpixCache;
 })();
 	
+
 // Copyright 2013 - UDS/CNRS
 // The Aladin Lite program is distributed under the terms
 // of the GNU General Public License version 3.
@@ -4180,6 +4194,7 @@ Utils.getAjaxObject = function(url, method, dataType, useProxy) {
         }); 
 };
 
+
 // Copyright 2013 - UDS/CNRS
 // The Aladin Lite program is distributed under the terms
 // of the GNU General Public License version 3.
@@ -4248,6 +4263,7 @@ URLBuilder = (function() {
     return URLBuilder;
     
 })();
+
 
 // Copyright 2013 - UDS/CNRS
 // The Aladin Lite program is distributed under the terms
@@ -4319,6 +4335,7 @@ MeasurementTable = (function() {
     
     return MeasurementTable;
 })();
+
 
 // Copyright 2013 - UDS/CNRS
 // The Aladin Lite program is distributed under the terms
@@ -4397,6 +4414,7 @@ Color = (function() {
     
     return Color;
 })();
+
 
 // Copyright 2013 - UDS/CNRS
 // The Aladin Lite program is distributed under the terms
@@ -4598,6 +4616,7 @@ AladinUtils = (function() {
     };
 })();
 
+
 // Copyright 2013 - UDS/CNRS
 // The Aladin Lite program is distributed under the terms
 // of the GNU General Public License version 3.
@@ -4632,6 +4651,7 @@ AladinUtils = (function() {
     SIN: Projection.PROJ_SIN,
     AITOFF:  Projection.PROJ_AITOFF
  };
+
 // Copyright 2013 - UDS/CNRS
 // The Aladin Lite program is distributed under the terms
 // of the GNU General Public License version 3.
@@ -4703,6 +4723,7 @@ CooFrameEnum.shortName = function(frameValue) {
 
     return null;
 };
+
 // Copyright 2013 - UDS/CNRS
 // The Aladin Lite program is distributed under the terms
 // of the GNU General Public License version 3.
@@ -4822,6 +4843,7 @@ Downloader = (function() {
 	
 	return Downloader;
 })();
+
 // Copyright 2015 - UDS/CNRS
 // The Aladin Lite program is distributed under the terms
 // of the GNU General Public License version 3.
@@ -4978,6 +5000,7 @@ CooGrid = (function() {
     
     return CooGrid;
 })();
+
 // Copyright 2013 - UDS/CNRS
 // The Aladin Lite program is distributed under the terms
 // of the GNU General Public License version 3.
@@ -5064,6 +5087,7 @@ Footprint = (function() {
     
     return Footprint;
 })();
+
 // Copyright 2013 - UDS/CNRS
 // The Aladin Lite program is distributed under the terms
 // of the GNU General Public License version 3.
@@ -5147,6 +5171,7 @@ Popup = (function() {
     return Popup;
 })();
     
+
 // Copyright 2013 - UDS/CNRS
 // The Aladin Lite program is distributed under the terms
 // of the GNU General Public License version 3.
@@ -5341,6 +5366,7 @@ Circle = (function() {
     
     return Circle;
 })();
+
 // Copyright 2015 - UDS/CNRS
 // The Aladin Lite program is distributed under the terms
 // of the GNU General Public License version 3.
@@ -5466,6 +5492,7 @@ Polyline= (function() {
     
     return Polyline;
 })();
+
 // Copyright 2015 - UDS/CNRS
 // The Aladin Lite program is distributed under the terms
 // of the GNU General Public License version 3.
@@ -5727,6 +5754,7 @@ Overlay = (function() {
 
     return Overlay;
 })();
+
 // Copyright 2013 - UDS/CNRS
 // The Aladin Lite program is distributed under the terms
 // of the GNU General Public License version 3.
@@ -5851,6 +5879,7 @@ cds.Source = (function() {
     
     return cds.Source;
 })();
+
 // Copyright 2013 - UDS/CNRS
 // The Aladin Lite program is distributed under the terms
 // of the GNU General Public License version 3.
@@ -6374,6 +6403,7 @@ ProgressiveCat = (function() {
     return ProgressiveCat;
 })();
     
+
 // Copyright 2013 - UDS/CNRS
 // The Aladin Lite program is distributed under the terms
 // of the GNU General Public License version 3.
@@ -6883,6 +6913,7 @@ cds.Catalog = (function() {
 
     return cds.Catalog;
 })();
+
 // Copyright 2013 - UDS/CNRS
 // The Aladin Lite program is distributed under the terms
 // of the GNU General Public License version 3.
@@ -6954,6 +6985,7 @@ Tile = (function() {
 
 	return Tile;
 })();
+
 // Copyright 2013 - UDS/CNRS
 // The Aladin Lite program is distributed under the terms
 // of the GNU General Public License version 3.
@@ -7028,6 +7060,7 @@ TileBuffer = (function() {
 	
 	return TileBuffer;
 })();
+
 // Copyright 2013 - UDS/CNRS
 // The Aladin Lite program is distributed under the terms
 // of the GNU General Public License version 3.
@@ -7298,6 +7331,7 @@ ColorMap.MAPS = {};
     return ColorMap;
 })();
     
+
 // Copyright 2016 - UDS/CNRS
 // The Aladin Lite program is distributed under the terms
 // of the GNU General Public License version 3.
@@ -7574,6 +7608,7 @@ HpxKey = (function() {
     return HpxKey;
 
 })();
+
 
 
 // Copyright 2013 - UDS/CNRS
@@ -8490,6 +8525,7 @@ coeff = 0.02;
 
     return HpxImageSurvey;
 })();
+
 // Copyright 2015 - UDS/CNRS
 // The Aladin Lite program is distributed under the terms
 // of the GNU General Public License version 3.
@@ -8561,6 +8597,7 @@ HealpixGrid = (function() {
 	
 	return HealpixGrid;
 })();
+
 // Copyright 2013 - UDS/CNRS
 // The Aladin Lite program is distributed under the terms
 // of the GNU General Public License version 3.
@@ -8613,6 +8650,7 @@ Location = (function() {
 	return Location;
 })();
 	
+
 // Copyright 2013 - UDS/CNRS
 // The Aladin Lite program is distributed under the terms
 // of the GNU General Public License version 3.
@@ -10252,6 +10290,7 @@ View = (function() {
     
     return View;
 })();
+
 // Copyright 2013 - UDS/CNRS
 // The Aladin Lite program is distributed under the terms
 // of the GNU General Public License version 3.
@@ -10274,16 +10313,16 @@ View = (function() {
 
 /******************************************************************************
  * Aladin Lite project
- * 
+ *
  * File Aladin.js (main class)
  * Facade to expose Aladin Lite methods
- * 
+ *
  * Author: Thomas Boch[CDS]
- * 
+ *
  *****************************************************************************/
 
 Aladin = (function() {
-    
+
     // Constructor
     var Aladin = function(aladinDiv, requestedOptions) {
         // check that aladinDiv exists, stop immediately otherwise
@@ -10294,16 +10333,16 @@ Aladin = (function() {
 
 
 	    HealpixCache.init();
-        
+
 	    var self = this;
-	    
+
 	    // if not options was set, try to retrieve them from the query string
 	    if (requestedOptions===undefined) {
 	        requestedOptions = this.getOptionsFromQueryString();
 	    }
 	    requestedOptions = requestedOptions || {};
-	    
-	    
+
+
 	    // 'fov' option was previsouly called 'zoom'
 	    if ('zoom' in requestedOptions) {
 	        var fovValue = requestedOptions.zoom;
@@ -10325,12 +10364,12 @@ Aladin = (function() {
 	            options[key] = requestedOptions[key];
 	        }
 	    }
-	    
+
         this.options = options;
 
         $("<style type='text/css'> .aladin-reticleColor { color: " + this.options.reticleColor + "; font-weight:bold;} </style>").appendTo(aladinDiv);
 
-	    
+
 
 		this.aladinDiv = aladinDiv;
 
@@ -10338,12 +10377,12 @@ Aladin = (function() {
 
 		// parent div
 		$(aladinDiv).addClass("aladin-container");
-		
-	      
+
+
 		var cooFrame = CooFrameEnum.fromString(options.cooFrame, CooFrameEnum.J2000);
 		// div where we write the position
 		var frameInJ2000 = cooFrame==CooFrameEnum.J2000;
-        
+
 		var locationDiv = $('<div class="aladin-location">'
 		                    + (options.showFrame ? '<select class="aladin-frameChoice"><option value="' + CooFrameEnum.J2000 + '" '
 		                    + (frameInJ2000 ? 'selected="selected"' : '') + '>J2000</option><option value="' + CooFrameEnum.GAL + '" '
@@ -10352,13 +10391,13 @@ Aladin = (function() {
 		                    .appendTo(aladinDiv);
 		// div where FoV value is written
 		var fovDiv = $('<div class="aladin-fov"></div>').appendTo(aladinDiv);
-		
-		
+
+
 		// zoom control
         if (options.showZoomControl) {
 	          $('<div class="aladin-zoomControl"><a href="#" class="zoomPlus" title="Zoom in">+</a><a href="#" class="zoomMinus" title="Zoom out">&ndash;</a></div>').appendTo(aladinDiv);
 	    }
-        
+
         // maximize control
         if (options.showFullscreenControl) {
             $('<div class="aladin-fullscreenControl aladin-maximize" title="Full screen"></div>')
@@ -10369,34 +10408,34 @@ Aladin = (function() {
             self.toggleFullscreen();
         });
 
-        
+
 
 
 
 		// Aladin logo
 		$("<div class='aladin-logo-container'><a href='http://aladin.u-strasbg.fr/' title='Powered by Aladin Lite' target='_blank'><div class='aladin-logo'></div></a></div>").appendTo(aladinDiv);
-		
-		
+
+
 		// we store the boxes
 		this.boxes = [];
 
         // measurement table
         this.measurementTable = new MeasurementTable(aladinDiv);
 
-		
-		
+
+
 		var location = new Location(locationDiv.find('.aladin-location-text'));
-        
+
 		// set different options
 		this.view = new View(this, location, fovDiv, cooFrame, options.fov);
 		this.view.setShowGrid(options.showCooGrid);
 
 	    // retrieve available surveys
 	    $.ajax({
-	        url: "http://aladin.u-strasbg.fr/java/nph-aladin.pl",
+	        url: "https://laniakean.com/data/nph-aladin.json",
 	        data: {"frame": "aladinLiteDic"},
 	        method: 'GET',
-	        dataType: 'jsonp', // could this be repaced by json ??
+	        dataType: 'json',
 	        success: function(data) {
                 var map = {};
                 for (var k=0; k<data.length; k++) {
@@ -10414,43 +10453,43 @@ Aladin = (function() {
 	        error: function() {
 	        }
 	    });
-		
+
 	      // layers control panel
         // TODO : valeur des checkbox en fonction des options
 		// TODO : classe LayerBox
         if (options.showLayersControl) {
             var d = $('<div class="aladin-layersControl-container" title="Manage layers"><div class="aladin-layersControl"></div></div>');
             d.appendTo(aladinDiv);
-            
+
             var layerBox = $('<div class="aladin-box aladin-layerBox aladin-cb-list"></div>');
             layerBox.appendTo(aladinDiv);
-            
+
             this.boxes.push(layerBox);
-            
+
             // we return false so that the default event is not submitted, and to prevent event bubbling
             d.click(function() {self.hideBoxes();self.showLayerBox();return false;});
 
         }
 
-        
+
         // goto control panel
         if (options.showGotoControl) {
             var d = $('<div class="aladin-gotoControl-container" title="Go to position"><div class="aladin-gotoControl"></div></div>');
             d.appendTo(aladinDiv);
-            
-            var gotoBox = 
+
+            var gotoBox =
                 $('<div class="aladin-box aladin-gotoBox">' +
                   '<a class="aladin-closeBtn">&times;</a>' +
                   '<div style="clear: both;"></div>' +
                   '<form class="aladin-target-form">Go to: <input type="text" placeholder="Object name/position" /></form></div>');
             gotoBox.appendTo(aladinDiv);
             this.boxes.push(gotoBox);
-            
+
             var input = gotoBox.find('.aladin-target-form input');
             input.on("paste keydown", function() {
                 $(this).removeClass('aladin-unknownObject'); // remove red border
             });
-            
+
             // TODO : classe GotoBox
             d.click(function() {
                 self.hideBoxes();
@@ -10458,19 +10497,19 @@ Aladin = (function() {
                 input.removeClass('aladin-unknownObject');
                 gotoBox.show();
                 input.focus();
-                
-                
+
+
                 return false;
             });
             gotoBox.find('.aladin-closeBtn').click(function() {self.hideBoxes();return false;});
         }
-        
+
         // share control panel
         if (options.showShareControl) {
             var d = $('<div class="aladin-shareControl-container" title="Share current view"><div class="aladin-shareControl"></div></div>');
             d.appendTo(aladinDiv);
-            
-            var shareBox = 
+
+            var shareBox =
                 $('<div class="aladin-box aladin-shareBox">' +
                   '<a class="aladin-closeBtn">&times;</a>' +
                   '<div style="clear: both;"></div>' +
@@ -10479,20 +10518,20 @@ Aladin = (function() {
                   '</div>');
             shareBox.appendTo(aladinDiv);
             this.boxes.push(shareBox);
-            
-            
+
+
             // TODO : classe GotoBox
             d.click(function() {
                 self.hideBoxes();
                 shareBox.show();
-                
-                
+
+
                 return false;
             });
             shareBox.find('.aladin-closeBtn').click(function() {self.hideBoxes();return false;});
         }
-		
-		
+
+
         this.gotoObject(options.target);
 
         if (options.log) {
@@ -10500,19 +10539,19 @@ Aladin = (function() {
             params['version'] = Aladin.VERSION;
             Logger.log("startup", params);
         }
-        
+
 		this.showReticle(options.showReticle);
-		
+
 		if (options.catalogUrls) {
 		    for (var k=0, len=options.catalogUrls.length; k<len; k++) {
 		        this.createCatalogFromVOTable(options.catalogUrls[k]);
 		    }
 		}
-		
+
 		this.setImageSurvey(options.survey);
 		this.view.showCatalog(options.showCatalog);
-		
-	    
+
+
     	var aladin = this;
     	$(aladinDiv).find('.aladin-frameChoice').change(function() {
     		aladin.setFrame($(this).val());
@@ -10520,7 +10559,7 @@ Aladin = (function() {
     	$('#projectionChoice').change(function() {
     		aladin.setProjection($(this).val());
     	});
-        
+
 
         $(aladinDiv).find('.aladin-target-form').submit(function() {
             aladin.gotoObject($(this).find('input').val(), function() {
@@ -10528,7 +10567,7 @@ Aladin = (function() {
             });
             return false;
         });
-        
+
         var zoomPlus = $(aladinDiv).find('.zoomPlus');
         zoomPlus.click(function() {
         	aladin.increaseZoom();
@@ -10537,7 +10576,7 @@ Aladin = (function() {
         zoomPlus.bind('mousedown', function(e) {
             e.preventDefault(); // to prevent text selection
         });
-        
+
         var zoomMinus = $(aladinDiv).find('.zoomMinus');
         zoomMinus.click(function() {
             aladin.decreaseZoom();
@@ -10546,18 +10585,18 @@ Aladin = (function() {
         zoomMinus.bind('mousedown', function(e) {
             e.preventDefault(); // to prevent text selection
         });
-        
+
         // go to full screen ?
         if (options.fullScreen) {
             window.setTimeout(function() {self.toggleFullscreen();}, 1000);
         }
 	};
-	
+
     /**** CONSTANTS ****/
     Aladin.VERSION = "{ALADIN-LITE-VERSION-NUMBER}"; // will be filled by the build.sh script
-    
+
     Aladin.JSONP_PROXY = "http://alasky.u-strasbg.fr/cgi/JSONProxy";
-    
+
     Aladin.DEFAULT_OPTIONS = {
         target:                 "0 +0",
         cooFrame:               "J2000",
@@ -10579,16 +10618,16 @@ Aladin = (function() {
         allowFullZoomout:       false
     };
 
-    
+
     Aladin.prototype.toggleFullscreen = function() {
         this.fullScreenBtn.toggleClass('aladin-maximize aladin-restore');
         var isInFullscreen = this.fullScreenBtn.hasClass('aladin-restore');
         this.fullScreenBtn.attr('title', isInFullscreen ? 'Restore original size' : 'Full screen');
         $(this.aladinDiv).toggleClass('aladin-fullscreen');
-        
+
         this.view.fixLayoutDimensions();
     };
-    
+
     Aladin.prototype.updateSurveysDropdownList = function(surveys) {
         surveys = surveys.sort(function(a, b) {
             if (! a.order) {
@@ -10603,7 +10642,7 @@ Aladin = (function() {
             select.append($("<option />").attr("selected", isCurSurvey).val(surveys[i].id).text(surveys[i].name));
         };
     };
-    
+
     Aladin.prototype.getOptionsFromQueryString = function() {
         var options = {};
         var requestedTarget = $.urlParam('target');
@@ -10622,25 +10661,25 @@ Aladin = (function() {
         if (requestedZoom && requestedZoom>0 && requestedZoom<180) {
             options.zoom = requestedZoom;
         }
-        
+
         var requestedShowreticle = $.urlParam('showReticle');
         if (requestedShowreticle) {
             options.showReticle = requestedShowreticle.toLowerCase()=='true';
         }
-        
+
         var requestedCooFrame =  $.urlParam('cooFrame');
         if (requestedCooFrame) {
             options.cooFrame = requestedCooFrame;
         }
-        
+
         var requestedFullscreen =  $.urlParam('fullScreen');
         if (requestedFullscreen !== undefined) {
             options.fullScreen = requestedFullscreen;
         }
-        
+
         return options;
     };
-	
+
     // TODO: rename to setFoV
     //@oldAPI
 	Aladin.prototype.setZoom = function(fovDegrees) {
@@ -10651,7 +10690,7 @@ Aladin = (function() {
 	Aladin.prototype.setFoV = Aladin.prototype.setFov = function(fovDegrees) {
 		this.view.setZoom(fovDegrees);
 	};
-	
+
     Aladin.prototype.setFrame = function(frameName) {
         if (! frameName) {
             return;
@@ -10680,12 +10719,12 @@ Aladin = (function() {
 				this.view.changeProjection(ProjectionEnum.SIN);
 		}
 	};
-    
+
     // point view to a given object (resolved by Sesame) or position
-    // TODO: should we use function 
+    // TODO: should we use function
     Aladin.prototype.gotoObject = function(targetName, errorCallback) {
     	var isObjectName = /[a-zA-Z]/.test(targetName);
-    	
+
     	// try to parse as a position
     	if ( ! isObjectName) {
     		var coo = new Coo();
@@ -10726,12 +10765,12 @@ Aladin = (function() {
 	                       });
     	}
     };
-    
-    
-    
+
+
+
     /**
      * go to a given position, expressed in the current coordinate frame
-     * 
+     *
      * @API
      */
     Aladin.prototype.gotoPosition = function(lon, lat) {
@@ -10745,50 +10784,50 @@ Aladin = (function() {
         }
     	this.view.pointTo(radec[0], radec[1]);
     };
-    
-    
+
+
     var doAnimation = function(aladin) {
         var params = aladin.animationParams;
         if (params==null) {
             return;
         }
         var now = new Date().getTime();
-        // this is the animation end: set the view to the end position, and call complete callback 
+        // this is the animation end: set the view to the end position, and call complete callback
         if (now>params['end']) {
             aladin.gotoRaDec(params['raEnd'], params['decEnd']);
-            
+
             if (params['complete']) {
                 params['complete']();
             }
-            
+
             return;
         }
-        
+
         // compute current position
         var curRa =  params['raStart'] + (params['raEnd'] - params['raStart']) * (now-params['start']) / (params['end'] - params['start']);
         var curDec = params['decStart'] + (params['decEnd'] - params['decStart']) * (now-params['start']) / (params['end'] - params['start']);
-        
+
         aladin.gotoRaDec(curRa, curDec);
-        
+
         setTimeout(function() {doAnimation(aladin);}, 50);
-        
+
     };
     /*
      * animate smoothly from the current position to the given ra, dec
-     * 
+     *
      * the total duration (in seconds) of the animation can be given (otherwise set to 5 seconds by default)
-     * 
+     *
      * complete: a function to call once the animation has completed
-     * 
+     *
      * @API
-     * 
+     *
      */
     Aladin.prototype.animateToRaDec = function(ra, dec, duration, complete) {
         duration = duration || 5;
-        
+
         this.animationParams = null;
         doAnimation(this);
-        
+
         var animationParams = {};
         animationParams['start'] = new Date().getTime();
         animationParams['end'] = new Date().getTime() + 1000*duration;
@@ -10798,15 +10837,15 @@ Aladin = (function() {
         animationParams['raEnd'] = ra;
         animationParams['decEnd'] = dec;
         animationParams['complete'] = complete;
-        
+
         this.animationParams = animationParams;
-        
+
         doAnimation(this);
     };
-    
+
     /**
      * get current [ra, dec] position of the center of the view
-     * 
+     *
      * @API
      */
     Aladin.prototype.getRaDec = function() {
@@ -10816,14 +10855,14 @@ Aladin = (function() {
         else {
             var radec = CooConversion.GalacticToJ2000([this.view.viewCenter.lon, this.view.viewCenter.lat]);
             return radec;
-            
+
         }
     };
-    
-    
+
+
     /**
      * point to a given position, expressed as a ra,dec coordinate
-     * 
+     *
      * @API
      */
     Aladin.prototype.gotoRaDec = function(ra, dec) {
@@ -10833,7 +10872,7 @@ Aladin = (function() {
     Aladin.prototype.showHealpixGrid = function(show) {
         this.view.showHealpixGrid(show);
     };
-    
+
     Aladin.prototype.showSurvey = function(show) {
         this.view.showSurvey(show);
     };
@@ -10858,16 +10897,16 @@ Aladin = (function() {
     Aladin.prototype.addMOC = function(moc) {
         this.view.addMOC(moc);
     };
-    
 
-  
+
+
     // @oldAPI
     Aladin.prototype.createImageSurvey = function(id, name, rootUrl, cooFrame, maxOrder, options) {
-        return new HpxImageSurvey(id, name, rootUrl, cooFrame, maxOrder, options);        
+        return new HpxImageSurvey(id, name, rootUrl, cooFrame, maxOrder, options);
     };
 
 
- 
+
     // @api
     Aladin.prototype.getBaseImageLayer = function() {
         return this.view.imageSurvey;
@@ -10889,7 +10928,7 @@ Aladin = (function() {
     };
     // @api
     Aladin.prototype.setBaseImageLayer = Aladin.prototype.setImageSurvey;
-    
+
     // @api
     Aladin.prototype.getOverlayImageLayer = function() {
         return this.view.overlayImageSurvey;
@@ -10898,7 +10937,7 @@ Aladin = (function() {
     Aladin.prototype.setOverlayImageLayer = function(imageSurvey, callback) {
         this.view.setOverlayImageSurvey(imageSurvey, callback);
     };
-    
+
 
     Aladin.prototype.increaseZoom = function(step) {
         if (!step) {
@@ -10906,14 +10945,14 @@ Aladin = (function() {
         }
     	this.view.setZoomLevel(this.view.zoomLevel+step);
     };
-    
+
     Aladin.prototype.decreaseZoom = function(step) {
         if (!step) {
             step = 5;
         }
     	this.view.setZoomLevel(this.view.zoomLevel-step);
     };
-    
+
     // @oldAPI
     Aladin.prototype.createCatalog = function(options) {
         return A.catalog(options);
@@ -10923,7 +10962,7 @@ Aladin = (function() {
     Aladin.prototype.createProgressiveCatalog = function(url, frame, maxOrder, options) {
         return new ProgressiveCat(url, frame, maxOrder, options);
     };
-    
+
     // @oldAPI
     Aladin.prototype.createSource = function(ra, dec, data) {
         return new cds.Source(ra, dec, data);
@@ -10965,7 +11004,7 @@ Aladin = (function() {
         return moc;
     };
 
-    
+
     // @oldAPI
     Aladin.prototype.createCatalogFromVOTable = function(url, options) {
         return A.catalogFromURL(url, options);
@@ -10997,7 +11036,7 @@ Aladin = (function() {
         var url = URLBuilder.buildSimbadCSURL(target, radius);
         return A.catalogFromURL(url, options, successCallback, false);
     };
-     
+
     // API
     A.catalogFromNED = function(target, radius, options, successCallback) {
         options = options || {};
@@ -11034,7 +11073,7 @@ Aladin = (function() {
         return A.catalogFromURL(url, options, successCallback, false);
     };
 
-     
+
      // API
      Aladin.prototype.on = function(what, myFunction) {
          if (what==='select') {
@@ -11047,11 +11086,11 @@ Aladin = (function() {
             this.objHoveredFunction = myFunction;
          }
      };
-     
+
      Aladin.prototype.select = function() {
          this.fire('selectstart');
      };
-     
+
      Aladin.prototype.fire = function(what, params) {
          if (what==='selectstart') {
              this.view.setMode(View.SELECT);
@@ -11063,7 +11102,7 @@ Aladin = (function() {
              }
          }
      };
-     
+
      Aladin.prototype.hideBoxes = function() {
          if (this.boxes) {
              for (var k=0; k<this.boxes.length; k++) {
@@ -11071,16 +11110,16 @@ Aladin = (function() {
              }
          }
      };
-     
+
      // ?
      Aladin.prototype.updateCM = function() {
-         
+
      };
-     
+
      // TODO : LayerBox should be a separate object
      Aladin.prototype.showLayerBox = function() {
          var self = this;
-         
+
          // first, update
          var layerBox = $(this.aladinDiv).find('.aladin-layerBox');
          layerBox.empty();
@@ -11092,9 +11131,9 @@ Aladin = (function() {
                  '<div><select class="aladin-cmSelection"></select><button class="aladin-btn aladin-btn-small aladin-reverseCm" type="button">Reverse</button></div></div>' +
                  '<div class="aladin-box-separator"></div>' +
                  '<div class="aladin-label">Overlay layers</div>');
-         
+
          var cmDiv = layerBox.find('.aladin-cmap');
-         
+
          // fill color maps options
          var cmSelect = layerBox.find('.aladin-cmSelection');
          for (var k=0; k<ColorMap.MAPS_NAMES.length; k++) {
@@ -11102,7 +11141,7 @@ Aladin = (function() {
          }
          cmSelect.val(self.getBaseImageLayer().getColorMap().mapName);
 
-         
+
          // loop over catalogs
          var cats = this.view.catalogs;
          var str = '<ul>';
@@ -11121,9 +11160,9 @@ Aladin = (function() {
          }
          str += '</ul>';
          layerBox.append(str);
-         
+
          layerBox.append('<div class="aladin-blank-separator"></div>');
-         
+
          // gestion du réticule
          var checked = '';
          if (this.view.displayReticle) {
@@ -11134,7 +11173,7 @@ Aladin = (function() {
          reticleCb.change(function() {
              self.showReticle($(this).is(':checked'));
          });
-         
+
          // Gestion grille Healpix
          checked = '';
          if (this.view.displayHpxGrid) {
@@ -11145,8 +11184,8 @@ Aladin = (function() {
          hpxGridCb.change(function() {
              self.showHealpixGrid($(this).is(':checked'));
          });
-         
-         
+
+
          layerBox.append('<div class="aladin-box-separator"></div>' +
               '<div class="aladin-label">Tools</div>');
          var exportBtn = $('<button class="aladin-btn" type="button">Export view as PNG</button>');
@@ -11154,7 +11193,7 @@ Aladin = (function() {
          exportBtn.click(function() {
              self.exportAsPNG();
          });
-                 
+
                  /*
                  '<div class="aladin-box-separator"></div>' +
                  '<div class="aladin-label">Projection</div>' +
@@ -11162,7 +11201,7 @@ Aladin = (function() {
                  */
 
          layerBox.find('.aladin-closeBtn').click(function() {self.hideBoxes();return false;});
-         
+
          // update list of surveys
          this.updateSurveysDropdownList(HpxImageSurvey.getAvailableSurveys());
          var surveySelection = $(this.aladinDiv).find('.aladin-surveySelection');
@@ -11170,35 +11209,35 @@ Aladin = (function() {
              var survey = HpxImageSurvey.getAvailableSurveys()[$(this)[0].selectedIndex];
              self.setImageSurvey(survey.id, function() {
                  var baseImgLayer = self.getBaseImageLayer();
-                 
+
                  if (baseImgLayer.useCors) {
                      // update color map list with current value color map
                      cmSelect.val(baseImgLayer.getColorMap().mapName);
                      cmDiv.show();
-                     
+
                      exportBtn.show();
                  }
                  else {
                      cmDiv.hide();
-                     
+
                      exportBtn.hide();
                  }
              });
 
-             
-             
+
+
          });
-         
+
          //// COLOR MAP management ////////////////////////////////////////////
          // update color map
          cmDiv.find('.aladin-cmSelection').change(function() {
              var cmName = $(this).find(':selected').val();
              self.getBaseImageLayer().getColorMap().update(cmName);
          });
-         
+
          // reverse color map
          cmDiv.find('.aladin-reverseCm').click(function() {
-             self.getBaseImageLayer().getColorMap().reverse(); 
+             self.getBaseImageLayer().getColorMap().reverse();
          });
          if (this.getBaseImageLayer().useCors) {
              cmDiv.show();
@@ -11210,8 +11249,8 @@ Aladin = (function() {
          }
          layerBox.find('.aladin-reverseCm').parent().attr('disabled', true);
          //////////////////////////////////////////////////////////////////////
-         
-         
+
+
          // handler to hide/show overlays
          $(this.aladinDiv).find('.aladin-layerBox ul input').change(function() {
              var catName = ($(this).attr('id').substr(12));
@@ -11223,12 +11262,12 @@ Aladin = (function() {
                  cat.hide();
              }
          });
-         
+
          // finally show
          layerBox.show();
-         
+
      };
-     
+
      Aladin.prototype.layerByName = function(name) {
          var c = this.view.catalogs;
          for (var k=0; k<this.view.catalogs.length; k++) {
@@ -11238,7 +11277,7 @@ Aladin = (function() {
          }
          return null;
      };
-     
+
      // TODO : integrate somehow into API ?
      Aladin.prototype.exportAsPNG = function(imgFormat) {
          window.open(this.getViewDataURL(), "Aladin Lite snapshot");
@@ -11254,7 +11293,7 @@ Aladin = (function() {
     Aladin.prototype.getViewDataURL = function(imgFormat) {
         return this.view.getCanvasDataURL(imgFormat);
     }
-     
+
      /** limit FOV range
       * @API
       * @param minFOV in degrees when zoom in at max
@@ -11266,30 +11305,30 @@ Aladin = (function() {
              minFOV = maxFOV;
              maxFOV = tmp;
          }
-         
+
          this.view.minFOV = minFOV;
          this.view.maxFOV = maxFOV;
-         
+
      };
-     
+
      /**
       * Transform pixel coordinates to world coordinates
-      * 
+      *
       * Origin (0,0) of pixel coordinates is at top left corner of Aladin Lite view
-      * 
+      *
       * @API
-      * 
+      *
       * @param x
       * @param y
-      * 
+      *
       * @return a [ra, dec] array with world coordinates in degrees
-      * 
+      *
       */
      Aladin.prototype.pix2world = function(x, y) {
          var xy = AladinUtils.viewToXy(x, y, this.view.width, this.view.height, this.view.largestDim, this.view.zoomFactor);
-         
+
          var radec = this.view.projection.unproject(xy.x, xy.y);
-         
+
          var res;
          if (this.view.cooFrame==CooFrameEnum.GAL) {
              res = CooConversion.GalacticToJ2000([radec.ra, radec.dec]);
@@ -11297,20 +11336,20 @@ Aladin = (function() {
          else {
              res =  [radec.ra, radec.dec];
          }
-             
+
          return res;
      };
-     
+
      /**
       * Transform world coordinates to pixel coordinates in the view
-      * 
+      *
       * @API
-      * 
-      * @param ra  
+      *
+      * @param ra
       * @param dec
-      * 
+      *
       * @return a [x, y] array with pixel coordinates in the view. Returns null if the projection failed somehow
-      *   
+      *
       */
      Aladin.prototype.world2pix = function(ra, dec) {
          var xy;
@@ -11329,23 +11368,23 @@ Aladin = (function() {
              return null;
          }
      };
-     
+
      /**
-      * 
+      *
       * @API
-      * 
-      * @param ra  
+      *
+      * @param ra
       * @param nbSteps the number of points to return along each side (the total number of points returned is 4*nbSteps)
-      * 
+      *
       * @return set of points along the current FoV with the following format: [[ra1, dec1], [ra2, dec2], ..., [ra_n, dec_n]]
-      *   
+      *
       */
      Aladin.prototype.getFovCorners = function(nbSteps) {
          // default value: 1
          if (!nbSteps || nbSteps<1) {
              nbSteps = 1;
          }
-         
+
          var points = [];
          var x1, y1, x2, y2;
          for (var k=0; k<4; k++) {
@@ -11353,19 +11392,19 @@ Aladin = (function() {
              y1 = (k<2) ? 0 : this.view.height-1;
              x2 = (k<2) ? this.view.width-1 : 0;
              y2 = (k==1 || k==2) ? this.view.height-1 :0;
-             
+
              for (var step=0; step<nbSteps; step++) {
                  points.push(this.pix2world(x1 + step/nbSteps * (x2-x1), y1 + step/nbSteps * (y2-y1)));
              }
          }
-         
+
          return points;
-         
+
      };
-     
+
      /**
       * @API
-      * 
+      *
       * @return the current FoV size in degrees as a 2-elements array
       */
      Aladin.prototype.getFov = function() {
@@ -11375,33 +11414,33 @@ Aladin = (function() {
          // TODO : take into account AITOFF projection where fov can be larger than 180
          fovX = Math.min(fovX, 180);
          fovY = Math.min(fovY, 180);
-         
+
          return [fovX, fovY];
      };
-     
+
      /**
       * @API
-      * 
+      *
       * @return the size in pixels of the Aladin Lite view
       */
      Aladin.prototype.getSize = function() {
          return [this.view.width, this.view.height];
      };
-     
+
      /**
       * @API
-      * 
+      *
       * @return the jQuery object representing the DIV element where the Aladin Lite instance lies
       */
      Aladin.prototype.getParentDiv = function() {
          return $(this.aladinDiv);
      };
-    
+
 	return Aladin;
 })();
 
 //// New API ////
-// For developers using Aladin lite: all objects should be created through the API, 
+// For developers using Aladin lite: all objects should be created through the API,
 // rather than creating directly the corresponding JS objects
 // This facade allows for more flexibility as objects can be updated/renamed harmlessly
 
@@ -11537,7 +11576,7 @@ Aladin.prototype.displayFITS = function(url, options, successCallback, errorCall
                 }
                 return;
             }
-            var label = options.label || "FITS image"; 
+            var label = options.label || "FITS image";
             var meta = response.data.meta;
             self.setOverlayImageLayer(self.createImageSurvey(label, label, response.data.url, "equatorial", meta.max_norder, {imgFormat: 'png'}));
             var transparency = (options && options.transparency) || 1.0;
