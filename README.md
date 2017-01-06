@@ -33,3 +33,44 @@ Then run `./build.sh`. The new files will be replace those in `/dist`.
 ## License
 
 This and the original are licensed under [GNU GPLv3](http://choosealicense.com/licenses/gpl-3.0/). The original license file can be found [here](https://github.com/PirtleShell/AladinLite/blob/master/COPYING) and [here is the original source code](http://aladin.u-strasbg.fr/AladinLite/doc/#source-code). It is copyrighted by the CDS.
+
+---
+
+## Currently needed Shims
+
+- [ ] `Sesame.resolve`. Currently uses [this url](http://cds.u-strasbg.fr/cgi-bin/nph-sesame.jsonp?).
+```js
+// defined in Sesame.js
+Sesame.resolve(objectName, callbackFunctionSuccess, callbackFunctionError)
+// returns an object with the following:
+{
+  Target: {
+    Resolver: {
+      jradeg: 'the right ascension in J2000 degrees',
+      jdedeg: 'the declination in J2000 degrees'
+    }
+  }
+}
+```
+
+- [ ] `nph-aladin.pl` which retrieves available surveys. [The current list](http://aladin.u-strasbg.fr/java/nph-aladin.pl?frame=aladinLiteDic).
+```js
+// returns an array of objects that look like this
+{
+   "id": "P/AKARI/FIS/Color",
+   "description": "AKARI Far-infrared All-Sky Survey - color composition WideL/WideS/N60",
+   "url": "http://alasky.u-strasbg.fr/AKARI-FIS/ColorLSN60", // this needs to be https
+   "copyright": "ISAS/JAXA",
+ "copyrightUrl": "http://www.ir.isas.jaxa.jp/AKARI/Archive/Images/FIS_AllSkyMap/",
+   "name": "AKARI Color (WideL-WideS-N60)",
+   "treePath": "Image/Infrared/AKARI-FIS",
+   "order": "04-05-00",
+   "maxOrder": 5,
+   "frame": "equatorial",
+   "format": "jpeg"
+}
+```
+
+- [ ] default surveys in `HpxImageSurvey.js`
+
+- [ ] logging? [Current logging endpoint](http://alasky.u-strasbg.fr/cgi/AladinLiteLogger/log.py). I think it's available over SSL [here](https://alaskybis.unistra.fr/cgi/AladinLiteLogger/log.py). Need to confirm.
