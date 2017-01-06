@@ -14,6 +14,10 @@ Fixing some of the things without access to Strasburg's servers is more easily a
 
 An https-served version for production is available [here](https://laniakean.com/data/nph-aladin.json).
 
+## `Sesame.resolve` relay
+
+`resolveNames.php` contains a script that relays requests to CDS's [Sesame object resolution service](http://cds.u-strasbg.fr/cgi-bin/Sesame). This is a hacky solution, but someday in the near future, CDS will implement implement the service under https protocol.
+
 ## License
 
 These tools are written by [Robert Pirtle](https://pirtle.xys). Their license is [MIT](http://choosealicense.com/licenses/mit/).
