@@ -42,6 +42,6 @@ This and the original are licensed under [GNU GPLv3](http://choosealicense.com/l
 
 - [X] `nph-aladin.pl` which retrieves available surveys. [The original list](http://aladin.u-strasbg.fr/java/nph-aladin.pl?frame=aladinLiteDic). A live SSL version is available [here](https://laniakean.com/data/nph-aladin.json).
 
-- [ ] default surveys in `HpxImageSurvey.js`
+- [X] default surveys in `HpxImageSurvey.js`
 
 - [ ] logging? [Current logging endpoint](http://alasky.u-strasbg.fr/cgi/AladinLiteLogger/log.py). I think it's available over SSL [here](https://alaskybis.unistra.fr/cgi/AladinLiteLogger/log.py). Need to confirm.

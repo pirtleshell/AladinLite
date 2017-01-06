@@ -21,11 +21,11 @@
 
 /******************************************************************************
  * Aladin Lite project
- * 
+ *
  * File HpxImageSurvey
- * 
+ *
  * Author: Thomas Boch[CDS]
- * 
+ *
  *****************************************************************************/
 
 HpxImageSurvey = (function() {
@@ -34,7 +34,7 @@ HpxImageSurvey = (function() {
     /** Constructor
      * cooFrame and maxOrder can be set to null
      * They will be determined by reading the properties file
-     *  
+     *
      */
     var HpxImageSurvey = function(id, name, rootUrl, cooFrame, maxOrder, options) {
         this.id = id;
@@ -45,7 +45,7 @@ HpxImageSurvey = (function() {
     	else {
     	    this.rootUrl = rootUrl;
     	}
-    	
+
     	options = options || {};
     	// TODO : support PNG
     	this.imgFormat = options.imgFormat || 'jpg';
@@ -57,21 +57,21 @@ HpxImageSurvey = (function() {
 
         // TODO : lire depuis fichier properties
         this.cooFrame = CooFrameEnum.fromString(cooFrame, CooFrameEnum.J2000);
-        
+
         // force coo frame for Glimpse 360
         if (this.rootUrl.indexOf('/glimpse360/aladin/data')>=0) {
             this.cooFrame = CooFrameEnum.J2000;
         }
-        
+
         // TODO : lire depuis fichier properties
         this.maxOrder = maxOrder;
-    	
+
     	this.allskyTexture = null;
-    	
+
     	this.alpha = 0.0; // opacity value between 0 and 1 (if this layer is an opacity layer)
-    
+
     	this.allskyTextureSize = 0;
-    
+
         this.lastUpdateDateNeededTiles = 0;
 
         var found = false;
@@ -91,20 +91,20 @@ HpxImageSurvey = (function() {
         }
         HpxImageSurvey.SURVEYS_OBJECTS[this.id] = this;
     };
-    
+
     HpxImageSurvey.UPDATE_NEEDED_TILES_DELAY = 1000; // in milliseconds
-    
+
     HpxImageSurvey.prototype.init = function(view, callback) {
     	this.view = view;
-    	
+
         if (!this.cm) {
             this.cm = new ColorMap(this.view);
         }
-    	
+
     	//this.tileBuffer = new TileBuffer();
     	// tileBuffer is now shared across different image surveys
     	this.tileBuffer = this.view.tileBuffer;
-    	
+
     	this.useCors = false;
     	var self = this;
         if ($.support.cors) {
@@ -120,7 +120,7 @@ HpxImageSurvey = (function() {
                 success: function() {
                     // CORS is supported
                     self.useCors = true;
-                    
+
                     self.retrieveAllskyTextures();
                     if (callback) {
                         callback();
@@ -139,141 +139,162 @@ HpxImageSurvey = (function() {
             this.retrieveAllskyTextures();
             callback();
         }
-    	
+
     };
-    
+
     HpxImageSurvey.DEFAULT_SURVEY_ID = "P/DSS2/color";
-    
+
     HpxImageSurvey.SURVEYS_OBJECTS = {};
     HpxImageSurvey.SURVEYS = [
-     {
-        "id": "P/2MASS/color",
-        "url": "http://alasky.u-strasbg.fr/2MASS/Color",
-        "name": "2MASS colored",
-        "maxOrder": 9,
-        "frame": "equatorial",
-        "format": "jpeg"
-     },
-     {
-        "id": "P/DSS2/color",
-        "url": "http://alasky.u-strasbg.fr/DSS/DSSColor",
-        "name": "DSS colored",
-        "maxOrder": 9,
-        "frame": "equatorial",
-        "format": "jpeg"
-     },
-     {
-        "id": "P/DSS2/red",
-        "url": "http://alasky.u-strasbg.fr/DSS/DSS2Merged",
-        "name": "DSS2 Red (F+R)",
-        "maxOrder": 9,
-        "frame": "equatorial",
-        "format": "jpeg fits"
-     },
-     {
-        "id": "P/Fermi/color",
-        "url": "http://alasky.u-strasbg.fr/Fermi/Color",
-        "name": "Fermi color",
-        "maxOrder": 3,
-        "frame": "equatorial",
-        "format": "jpeg"
-     },
-     {
-        "id": "P/Finkbeiner",
-        "url": "http://alasky.u-strasbg.fr/FinkbeinerHalpha",
-        "maxOrder": 3,
-        "frame": "galactic",
-        "format": "jpeg fits",
-        "name": "Halpha"
-     },
-     {
-        "id": "P/GALEXGR6/AIS/color",
-        "url": "http://alasky.u-strasbg.fr/GALEX/GR6-02-Color",
-        "name": "GALEX Allsky Imaging Survey colored",
-        "maxOrder": 8,
-        "frame": "equatorial",
-        "format": "jpeg"
-     },
-     {
-        "id": "P/IRIS/color",
-        "url": "http://alasky.u-strasbg.fr/IRISColor",
-        "name": "IRIS colored",
-        "maxOrder": 3,
-        "frame": "galactic",
-        "format": "jpeg"
-     },
-     {
-        "id": "P/Mellinger/color",
-        "url": "http://alasky.u-strasbg.fr/MellingerRGB",
-        "name": "Mellinger colored",
-        "maxOrder": 4,
-        "frame": "galactic",
-        "format": "jpeg"
-     },
-     {
-        "id": "P/SDSS9/color",
-        "url": "http://alasky.u-strasbg.fr/SDSS/DR9/color",
-        "name": "SDSS9 colored",
-        "maxOrder": 10,
-        "frame": "equatorial",
-        "format": "jpeg"
-     },
-     {
-        "id": "P/SPITZER/color",
-        "url": "http://alasky.u-strasbg.fr/SpitzerI1I2I4color",
-        "name": "IRAC color I1,I2,I4 - (GLIMPSE, SAGE, SAGE-SMC, SINGS)",
-        "maxOrder": 9,
-        "frame": "galactic",
-        "format": "jpeg"
-     },
-     {
-        "id": "P/VTSS/Ha",
-        "url": "http://alasky.u-strasbg.fr/VTSS/Ha",
-        "maxOrder": 3,
-        "frame": "galactic",
-        "format": "png jpeg fits",
-        "name": "VTSS-Ha"
-     },
-     {
-        "id": "P/XMM/EPIC",
-        "url": "http://saada.u-strasbg.fr/xmmallsky",
-        "name": "XMM-Newton stacked EPIC images (no phot. normalization)",
-        "maxOrder": 7,
-        "frame": "equatorial",
-        "format": "png fits"
-     },
-     {
-         "id": "P/XMM/PN/color",
-          "url": "http://saada.unistra.fr/xmmpnsky",
-          "name": "XMM PN colored",
-          "maxOrder": 7,
-          "frame": "equatorial",
-          "format": "png jpeg"
-     },
-     {
-         "id": "P/allWISE/color",
-         "url": "http://alasky.u-strasbg.fr/AllWISE/RGB-W4-W2-W1/",
-         "name": "AllWISE color",
-         "maxOrder": 8,
-         "frame": "equatorial",
-         "format": "jpeg"
-     },
-     {
-         "id": "P/GLIMPSE360",
-         "url": "http://www.spitzer.caltech.edu/glimpse360/aladin/data",
-         "name": "GLIMPSE360",
-         "maxOrder": 9,
-         "frame": "equatorial",
-         "format": "jpeg"
-     }
-  ];
+      { 
+        id: 'P/AKARI/FIS/Color',
+        url: 'https://alaskybis.unistra.fr/AKARI-FIS/ColorLSN60',
+        name: 'AKARI Color (WideL-WideS-N60)',
+        maxOrder: 5,
+        frame: 'equatorial',
+        format: 'jpeg'
+      },
+      {
+        id: 'P/DSS2/blue',
+        url: 'https://alaskybis.unistra.fr/DSS/DSS2-blue-XJ-S',
+        name: 'DSS2 Blue (XJ+S)',
+        maxOrder: 9,
+        frame: 'equatorial',
+        format: 'jpeg fits'
+      },
+      {
+        id: 'P/DSS2/color',
+        url: 'https://alaskybis.unistra.fr/DSS/DSSColor',
+        name: 'DSS colored',
+        maxOrder: 9,
+        frame: 'equatorial',
+        format: 'jpeg'
+      },
+      {
+        id: 'P/DSS2/red',
+        url: 'https://alaskybis.unistra.fr/DSS/DSS2Merged',
+        name: 'DSS2 Red (F+R)',
+        maxOrder: 9,
+        frame: 'equatorial',
+        format: 'jpeg fits' },
+      {
+        id: 'P/Fermi/color',
+        url: 'https://alaskybis.unistra.fr/Fermi/Color',
+        name: 'Fermi color',
+        maxOrder: 3,
+        frame: 'equatorial',
+        format: 'jpeg'
+      },
+      {
+        id: 'P/GALEXGR6/AIS/color',
+        url: 'https://alaskybis.unistra.fr/GALEX/GR6-02-Color',
+        name: 'GALEX Allsky Imaging Survey (AIS) colored',
+        maxOrder: 8,
+        frame: 'equatorial',
+        format: 'png'
+      },
+      {
+        id: 'P/IRIS/color',
+        url: 'https://alaskybis.unistra.fr/IRISColor',
+        name: 'IRIS colored',
+        maxOrder: 3,
+        frame: 'galactic',
+        format: 'jpeg' },
+      {
+        id: 'P/MAXI_SSC_SUM',
+        url: 'https://alaskybis.unistra.fr//JAXA/JAXA_P_MAXI_SSC_SUM',
+        name: 'MAXI_SSC_SUM',
+        maxOrder: 6,
+        frame: 'equatorial',
+        format: 'png'
+      },
+      {
+        id: 'P/Mellinger/color',
+        url: 'https://alaskybis.unistra.fr/MellingerRGB',
+        name: 'Mellinger colored',
+        maxOrder: 4,
+        frame: 'galactic',
+        format: 'jpeg'
+      },
+      {
+        id: 'P/SDSS9/color',
+        url: 'https://alaskybis.unistra.fr/SDSS/DR9/color-alt',
+        name: 'SDSS9 colored',
+        maxOrder: 10,
+        frame: 'equatorial',
+        format: 'jpeg'
+      },
+      {
+        id: 'P/SDSS9/color',
+        url: 'https://alaskybis.unistra.fr/SDSS/DR9/color-alt',
+        name: 'SDSS9 colored',
+        maxOrder: 10,
+        frame: 'equatorial',
+        format: 'jpeg'
+      },
+      {
+        id: 'P/SPITZER/color',
+        url: 'https://alaskybis.unistra.fr/SpitzerI1I2I4color',
+        name: 'IRAC color I1,I2,I4 - (GLIMPSE, SAGE, SAGE-SMC, SINGS)',
+        maxOrder: 9,
+        frame: 'galactic',
+        format: 'jpeg'
+      },
+      {
+        id: 'P/SWIFT_BAT_FLUX',
+        url: 'https://alaskybis.unistra.fr//JAXA/JAXA_P_SWIFT_BAT_FLUX',
+        name: 'SWIFT_BAT_FLUX',
+        maxOrder: 6,
+        frame: 'equatorial',
+        format: 'png'
+      },
+      {
+        id: 'P/VTSS/Ha',
+        url: 'https://alaskybis.unistra.fr/IRAP/VTSS',
+        name: 'VTSS Halpha',
+        maxOrder: 3,
+        frame: 'galactic',
+        format: 'png jpeg fits'
+      },
+      {
+        id: 'P/VTSS/Ha',
+        url: 'https://alaskybis.unistra.fr/IRAP/VTSS',
+        name: 'VTSS Halpha',
+        maxOrder: 3,
+        frame: 'galactic',
+        format: 'png jpeg fits'
+      },
+      {
+        id: 'P/VTSS/Ha',
+        url: 'https://alaskybis.unistra.fr/IRAP/VTSS',
+        name: 'VTSS Halpha',
+        maxOrder: 3,
+        frame: 'galactic',
+        format: 'png jpeg fits'
+      },
+      {
+        id: 'P/XMM/PN/color',
+        url: 'https://alaskybis.unistra.fr/SSC/xmmpnsky',
+        name: 'XMM PN colored',
+        maxOrder: 7,
+        frame: 'equatorial',
+        format: 'png jpeg'
+      },
+      {
+        id: 'P/allWISE/color',
+        url: 'https://alaskybis.unistra.fr/AllWISE/RGB-W4-W2-W1',
+        name: 'AllWISE color',
+        maxOrder: 8,
+        frame: 'equatorial',
+        format: 'jpeg'
+      }
+    ];
 
 
-    
     HpxImageSurvey.getAvailableSurveys = function() {
     	return HpxImageSurvey.SURVEYS;
     };
-    
+
     HpxImageSurvey.getSurveyInfoFromId = function(id) {
         var surveys = HpxImageSurvey.getAvailableSurveys();
         for (var i=0; i<surveys.length; i++) {
@@ -299,23 +320,23 @@ HpxImageSurvey = (function() {
 
         return null;
     }
-   
-/* 
+
+/*
     HpxImageSurvey.getSurveyFromId = function(id) {
     	var info = HpxImageSurvey.getSurveyInfoFromId(id);
     	if (info) {
     		return new HpxImageSurvey(info.id, info.name, info.url, info.frame, info.maxOrder);
     	}
-    	
+
     	return null;
     };
 */
-    
+
     HpxImageSurvey.prototype.getTileURL = function(norder, npix) {
     	var dirIdx = Math.floor(npix/10000)*10000;
     	return this.rootUrl + "/" + "Norder" + norder + "/Dir" + dirIdx + "/Npix" + npix + "." + this.imgFormat;
     };
-    
+
     HpxImageSurvey.prototype.retrieveAllskyTextures = function() {
     	// start loading of allsky
     	var img = new Image();
@@ -327,8 +348,8 @@ HpxImageSurvey = (function() {
     		// sur ipad, le fichier qu'on récupère est 2 fois plus petit. Il faut donc déterminer la taille de la texture dynamiquement
     	    self.allskyTextureSize = img.width/27;
             self.allskyTexture = img;
-   
-            /* 
+
+            /*
     		// récupération des 768 textures (NSIDE=4)
     		for (var j=0; j<29; j++) {
     			for (var i=0; i<27; i++) {
@@ -344,12 +365,12 @@ HpxImageSurvey = (function() {
     		self.view.requestRedraw();
     	};
     	img.src = this.rootUrl + '/Norder3/Allsky.' + this.imgFormat;
-    
+
     };
 
     // Nouvelle méthode pour traitement des DEFORMATIONS
     /**
-     * Draw the image survey according 
+     * Draw the image survey according
      *
      * @param ctx: canvas context where to draw
      * @param view
@@ -405,7 +426,7 @@ HpxImageSurvey = (function() {
         for (var k=0; k<cornersXYViewMap.length; k++) {
             hpxKeys.push(new HpxKey(norder, cornersXYViewMap[k].ipix, this, tSize, tSize));
         }
-        
+
         for (var k=0; k<hpxKeys.length; k++) {
             hpxKeys[k].draw(ctx, view);
         }
@@ -438,17 +459,17 @@ HpxImageSurvey = (function() {
         }
     };
 
-    
+
     HpxImageSurvey.prototype.redrawAllsky = function(ctx, cornersXYViewMap, fov, norder) {
     	// for norder deeper than 6, we think it brings nothing to draw the all-sky
     	if (this.view.curNorder>6) {
     		return;
     	}
-    	
+
     	if ( ! this.allskyTexture ) {
     		return;
     	}
-    	
+
 
     	var cornersXYView;
         var coeff = 0;
@@ -459,7 +480,7 @@ HpxImageSurvey = (function() {
     		ipix = cornersXYView.ipix;
 
 
-    		
+
             if ( ! this.allskyTexture || !Tile.isImageOk(this.allskyTexture) ) {
                 continue;
             }
@@ -467,8 +488,8 @@ HpxImageSurvey = (function() {
             var dy = this.allskyTextureSize * Math.floor(ipix/27);
             var dx = this.allskyTextureSize * (ipix - 27*Math.floor(ipix/27));
 
-    		
-    
+
+
     		// TODO : plutot agrandir le clip ?
     	    // grow cornersXYView
     	    if (fov>40) {
@@ -481,24 +502,24 @@ HpxImageSurvey = (function() {
     	            cornersXYView[i].vy += coeff*diff.y;
     	        }
     	    }
-    			
+
     	    this.drawOneTile(ctx, this.allskyTexture, cornersXYView, this.allskyTextureSize, null, dx, dy, true);
     	}
     };
-    
+
     HpxImageSurvey.prototype.getColorMap = function() {
         return this.cm;
     };
-    
+
     var drawEven = true;
     // TODO: avoir un mode où on ne cherche pas à dessiner d'abord les tuiles parentes (pour génération vignettes côté serveur)
     HpxImageSurvey.prototype.redrawHighres = function(ctx, cornersXYViewMap, norder) {
-        
+
         // DOES THAT FIX THE PROBLEM ???
         if (cornersXYViewMap.length==0) {
             return;
         }
-        
+
         drawEven = ! drawEven;
         var now = new Date().getTime();
         var updateNeededTiles = (now-this.lastUpdateDateNeededTiles) > HpxImageSurvey.UPDATE_NEEDED_TILES_DELAY;
@@ -509,30 +530,30 @@ HpxImageSurvey = (function() {
         var parentTilesToDraw = [];
         var parentTilesToDrawIpix = {};
         var missingTiles = false;
-        
+
         var tilesToDownload = [];
         var parentTilesToDownload = [];
-        
+
         var parentIpix;
         var ipix;
-        
+
         // tri des tuiles selon la distance
         if (updateNeededTiles) {
             var center = [(cornersXYViewMap[0][0].vx+cornersXYViewMap[0][1].vx)/2, (cornersXYViewMap[0][0].vy+cornersXYViewMap[0][1].vy)/2];
             var newCornersXYViewMap = cornersXYViewMap.sort(function(a, b) {
                 var cA = [(a[0].vx+a[2].vx)/2, (a[0].vy+a[2].vy)/2];
-                var cB = [(b[0].vx+b[2].vx)/2, (b[0].vy+b[2].vy)/2]; 
+                var cB = [(b[0].vx+b[2].vx)/2, (b[0].vy+b[2].vy)/2];
 
                 var distA = (cA[0]-center[0])*(cA[0]-center[0]) + (cA[1]-center[1])*(cA[1]-center[1]);
                 var distB = (cB[0]-center[0])*(cB[0]-center[0]) + (cB[1]-center[1])*(cB[1]-center[1]);
-                
+
                 return distA-distB;
-                    
+
             });
             cornersXYViewMap = newCornersXYViewMap;
         }
 
-        
+
     	for (var k=0, len=cornersXYViewMap.length; k<len; k++) {
     		cornersXYView = cornersXYViewMap[k];
     		ipix = cornersXYView.ipix;
@@ -544,7 +565,7 @@ HpxImageSurvey = (function() {
     		    continue;
     		}
     		*/
-            
+
             // on demande à charger le parent (cas d'un zoomOut)
             // TODO : mettre priorité plus basse
             parentIpix = ~~(ipix/4);
@@ -555,20 +576,20 @@ HpxImageSurvey = (function() {
                     parentTilesToDownload.push({img: parentTile.img, url: parentUrl});
                 }
             }
-            
+
             url = this.getTileURL(norder, ipix);
             tile = this.tileBuffer.getTile(url);
-            
+
             if ( ! tile ) {
                 missingTiles = true;
-                
+
                 if (updateNeededTiles) {
                     var tile = this.tileBuffer.addTile(url);
                     if (tile) {
                         tilesToDownload.push({img: tile.img, url: url});
                     }
                 }
-                
+
                 // is the parent tile available ?
                 if (parentNorder>=3 && ! parentTilesToDrawIpix[parentIpix]) {
                 	parentTile = this.tileBuffer.getTile(parentUrl);
@@ -580,7 +601,7 @@ HpxImageSurvey = (function() {
                 	}
                 	parentTilesToDrawIpix[parentIpix] = 1;
                 }
-    
+
                 continue;
             }
             else if ( ! Tile.isImageOk(tile.img)) {
@@ -588,7 +609,7 @@ HpxImageSurvey = (function() {
                 if (updateNeededTiles && ! tile.img.dlError) {
                     tilesToDownload.push({img: tile.img, url: url});
                 }
-                
+
                 // is the parent tile available ?
                 if (parentNorder>=3 && ! parentTilesToDrawIpix[parentIpix]) {
                 	parentTile = this.tileBuffer.getTile(parentUrl);
@@ -600,19 +621,19 @@ HpxImageSurvey = (function() {
                 	}
                 	parentTilesToDrawIpix[parentIpix] = 1;
                 }
-                
+
                 continue;
             }
             tilesToDraw.push({img: tile.img, corners: cornersXYView});
         }
-    	
-    
-    
+
+
+
         // draw parent tiles
         for (var k=0, len = parentTilesToDraw.length; k<len; k++) {
         	this.drawOneTile(ctx, parentTilesToDraw[k].img, parentTilesToDraw[k].corners, parentTilesToDraw[k].img.width);
         }
-        
+
         // draw tiles
         ///*
         for (var k=0, len = tilesToDraw.length; k<len; k++) {
@@ -626,7 +647,7 @@ HpxImageSurvey = (function() {
         	this.drawOneTile(ctx, img, tilesToDraw[k].corners, img.width, alpha);
         }
         //*/
-    
+
 
         // demande de chargement des tuiles manquantes et mise à jour lastUpdateDateNeededTiles
         if (updateNeededTiles) {
@@ -645,23 +666,23 @@ HpxImageSurvey = (function() {
             this.view.requestRedrawAtDate(now+HpxImageSurvey.UPDATE_NEEDED_TILES_DELAY+10);
         }
     };
-    
+
     function dist2(x1,y1,x2,y2) {
     	return Math.pow(x2-x1, 2) + Math.pow(y2-y1, 2);
     }
-    
+
     HpxImageSurvey.prototype.drawOneTile = function(ctx, img, cornersXYView, textureSize, alpha, dx, dy, applyCorrection) {
-        
+
         // apply CM
         var newImg = this.useCors ? this.cm.apply(img) : img;
-        
-        
+
+
     	// is the tile a diamond ?
     //	var round = AladinUtils.myRound;
     //	var b = cornersXYView;
     //	var flagDiamond =  round(b[0].vx - b[2].vx) == round(b[1].vx - b[3].vx)
-    //    				&& round(b[0].vy - b[2].vy) == round(b[1].vy - b[3].vy); 
-    	
+    //    				&& round(b[0].vy - b[2].vy) == round(b[1].vy - b[3].vy);
+
     	drawTexturedTriangle(ctx, newImg,
                 cornersXYView[0].vx, cornersXYView[0].vy,
                 cornersXYView[1].vx, cornersXYView[1].vy,
@@ -681,7 +702,7 @@ HpxImageSurvey = (function() {
         		alpha,
                 dx, dy, applyCorrection);
     };
-    
+
        HpxImageSurvey.prototype.drawOneTile2 = function(ctx, img, cornersXYView, textureSize, alpha, dx, dy, applyCorrection, norder) {
 
         // apply CM
@@ -692,7 +713,7 @@ HpxImageSurvey = (function() {
     //  var round = AladinUtils.myRound;
     //  var b = cornersXYView;
     //  var flagDiamond =  round(b[0].vx - b[2].vx) == round(b[1].vx - b[3].vx)
-    //                  && round(b[0].vy - b[2].vy) == round(b[1].vy - b[3].vy); 
+    //                  && round(b[0].vy - b[2].vy) == round(b[1].vy - b[3].vy);
 
         var delta = norder<=3 ? 0.2 : 0;
         drawTexturedTriangle2(ctx, newImg,
@@ -714,7 +735,7 @@ HpxImageSurvey = (function() {
                 alpha,
                 dx, dy, applyCorrection, norder);
     };
- 
+
     function drawTexturedTriangle2(ctx, img, x0, y0, x1, y1, x2, y2,
                                         u0, v0, u1, v1, u2, v2, alpha,
                                         dx, dy, applyCorrection, norder) {
@@ -750,7 +771,7 @@ HpxImageSurvey = (function() {
             coeff = 0.01;
         }
         if (norder<3) {
-            coeff = 0.02; // TODO ???? 
+            coeff = 0.02; // TODO ????
         }
 */
 coeff = 0.02;
@@ -782,14 +803,14 @@ coeff = 0.02;
              (u0 * (v2 * y1  -  v1 * y2) + v0 * (u1 *  y2 - u2  * y1) + (u2 * v1 - u1 * v2) * y0) * d_inv  // dy
         );
         ctx.drawImage(img, 0, 0);
-        //ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, img.width, img.height); 
+        //ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, img.width, img.height);
 
     //    ctx.globalAlpha = 1.0;
 
         ctx.restore();
     }
 
- 
+
     // uses affine texture mapping to draw a textured triangle
     // at screen coordinates [x0, y0], [x1, y1], [x2, y2] from
     // img *pixel* coordinates [u0, v0], [u1, v1], [u2, v2]
@@ -822,7 +843,7 @@ coeff = 0.02;
         if (alpha) {
         	ctx.globalAlpha = alpha;
         }
-    
+
         var coeff = 0.01; // default value
         if (applyCorrection) {
             coeff = 0.01;
@@ -855,17 +876,17 @@ coeff = 0.02;
              (u0 * (v2 * y1  -  v1 * y2) + v0 * (u1 *  y2 - u2  * y1) + (u2 * v1 - u1 * v2) * y0) * d_inv  // dy
         );
         ctx.drawImage(img, 0, 0);
-        //ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, img.width, img.height); 
-        
+        //ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, img.width, img.height);
+
     //    ctx.globalAlpha = 1.0;
-    
+
         ctx.restore();
     }
-    
+
     /*
     function drawTexturedTriangle4Points(ctx, img, x0, y0, x1, y1, x2, y2,
             u0, v0, u1, v1, u2, v2) {
-    
+
     	var x3 = x1+x2-x0;
     	var y3 = y1+y2-y0;
     // ---- centroid ----
@@ -892,19 +913,19 @@ coeff = 0.02;
     );
     //ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, img.width, img.height); // faster ??
     ctx.drawImage(img, 0, 0); // slower ??
-    
+
     ctx.restore();
     }
     */
-    
-    
+
+
     // @api
     HpxImageSurvey.prototype.setAlpha = function(alpha) {
         alpha = +alpha; // coerce to number
         this.alpha = Math.max(0, Math.min(alpha, 1));
         this.view.requestRedraw();
     };
-    
+
     // @api
     HpxImageSurvey.prototype.getAlpha = function() {
         return this.alpha;
