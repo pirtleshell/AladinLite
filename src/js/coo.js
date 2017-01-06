@@ -28,8 +28,8 @@ Coo.prototype = {
 
 		this.x = coslat*AstroMath.cosd(this.lon);
 		this.y = coslat*AstroMath.sind(this.lon);
-		this.z = AstroMath.sind(this.lat);	
-	}, 
+		this.z = AstroMath.sind(this.lat);
+	},
 	computeLonLat: function() {
 		var r2 = this.x*this.x+this.y*this.y;
 		this.lon = 0.0;
@@ -150,7 +150,7 @@ Coo.prototype = {
 		}
 		var strlon = str.substring(0,p);
 		var strlat = str.substring(p);
-	
+
 		this.lon = this.parseLon(strlon);	// sets the precision parameter
 		this.lat = this.parseLat(strlat);	// sets the precision parameter
 		return true;
@@ -184,10 +184,10 @@ Coo.prototype = {
 				i++;
 			}
 			this.prec = pr;
-			return l*15/3600.0;	
+			return l*15/3600.0;
 		}
 	},
-			
+
 	parseLat: function(str) {
 		var str = str.trim();
         str = str.replace(/:/g, ' ');
@@ -226,7 +226,7 @@ Coo.prototype = {
 				i++;
 			}
 			this.prec = pr;
-			return l*sign/3600.0;	
+			return l*sign/3600.0;
 		}
 	},
 
@@ -257,7 +257,7 @@ Coo.prototype = {
 		}
 		return strlon+strlat;
 	}
-		
+
 }
 
 /**
@@ -447,4 +447,4 @@ Numbers.toSexagesimal = function(num, prec, plus) {
 		default:
 			return sign+Numbers.format(n, 1);
 	}
-}
+};
