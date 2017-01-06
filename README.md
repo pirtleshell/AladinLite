@@ -10,6 +10,19 @@ When it's done, you should be able to just take the minimized js and minimized c
 
 ## Building
 
+### With gulp
+
+Clone this repository and install the node dependencies for building:
+```
+git clone https://github.com/PirtleShell/AladinLite.git
+cd AladinLite
+npm install
+```
+
+Now you can build it by running `gulp build`. To live update on changes, just run `gulp`.
+
+### With original build script
+
 Compiling the js and css files requires that you have [uglifyjs2](https://github.com/mishoo/UglifyJS2) and [less](https://github.com/less/less.js). These can be installed with `npm`:
 ```sh
 npm i -g uglify-js less

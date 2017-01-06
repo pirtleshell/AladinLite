@@ -1,0 +1,32 @@
+{
+  "name": "aladinlite",
+  "version": "0.0.1",
+  "description": "an SSL-enabled fork of CDS's Aladin Lite",
+  "scripts": {
+    "build": "gulp build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pirtleshell/AladinLite.git"
+  },
+  "keywords": [
+    "astronomy",
+    "viewer",
+    "telescope",
+    "space"
+  ],
+  "author": "CDS",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/pirtleshell/AladinLite/issues"
+  },
+  "homepage": "https://github.com/pirtleshell/AladinLite#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^2.3.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^2.0.0",
+    "run-sequence": "^1.2.2"
+  }
+}
