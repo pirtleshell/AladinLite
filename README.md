@@ -44,4 +44,4 @@ This and the original are licensed under [GNU GPLv3](http://choosealicense.com/l
 
 - [X] default surveys in `HpxImageSurvey.js`
 
-- [ ] logging? [Current logging endpoint](http://alasky.u-strasbg.fr/cgi/AladinLiteLogger/log.py). I think it's available over SSL [here](https://alaskybis.unistra.fr/cgi/AladinLiteLogger/log.py). Need to confirm.
+- [X] logging? [Current logging endpoint](http://alasky.u-strasbg.fr/cgi/AladinLiteLogger/log.py). I think it's available over SSL [here](https://alaskybis.unistra.fr/cgi/AladinLiteLogger/log.py). Need to confirm.
