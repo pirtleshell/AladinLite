@@ -9,6 +9,11 @@ license: MIT
 import urllib.request as request
 import json
 
+def not_found(survey):
+    msg = '* {} not found in available mirrors'.format(survey['id'])
+    msg += ', [current link]({})'.format(survey['url'])
+    print(msg)
+
 def main():
     # currently used data
     current_http_url = 'http://aladin.u-strasbg.fr/java/nph-aladin.pl'
@@ -22,24 +27,22 @@ def main():
     survey_data = json.loads(request.urlopen(current_http_url).read().decode('utf8'))
     mirror_data = json.loads(request.urlopen(mirrors_list_url).read().decode('utf8'))
 
-    # mirror IDs are prefixed with 'CDS/'
-    processed_mirrors = {}
-    for mirror in mirror_data:
-        survey_id = mirror['ID'][4:]
-        processed_mirrors[survey_id] = mirror['hips_service_url_2']
-
-    for i, survey in enumerate(survey_data):
-        if survey['id'] in processed_mirrors.keys():
-            survey['url'] = processed_mirrors[survey['id']]
-        else:
-            msg = '* {} not found in available mirrors'.format(str(survey['id']))
-            msg += ', [current link]({})'.format(survey['url'])
-            del survey_data[i]
-            print(msg)
+    https_survey_data = []
+    for survey in survey_data:
+        # check for mirror info on survey
+        for mirror in [m for m in mirror_data if survey['id'] in m['ID']]:
+            # find https mirror
+            urls = [mirror[key] for key in mirror.keys() if key != 'ID']
+            https = [url for url in urls if url[:8] == 'https://']
+            if len(https) > 0:
+                survey['url'] = https[0]
+                https_survey_data.append(survey)
+            else:
+                not_found(survey)
 
     json_filename = 'data/nph-aladin.json'
     with open(json_filename, 'w') as f:
-        f.write(json.dumps(survey_data))
+        f.write(json.dumps(https_survey_data))
         print('file written to {}'.format(json_filename))
 
 if __name__ == '__main__':
