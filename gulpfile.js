@@ -2,6 +2,7 @@ const fs = require('fs');
 const gulp = require('gulp');
 const minifycss = require('gulp-clean-css');
 const uglify = require('gulp-uglify');
+const insert = require('gulp-insert');
 const concat = require('gulp-concat');
 const rename = require('gulp-rename');
 const runSequence = require('run-sequence');
@@ -16,8 +17,15 @@ gulp.task('minify-css', function() {
 });
 
 gulp.task('minify-js', function() {
+  const copyright = [
+    '/** AladinLite | (c) CDS - http://cds.u-strasbg.fr/ | license: GPLv3.0',
+    '  * Written and maintained by Thomas Boch <cds-question@unistra.fr>',
+    '  * SSL Fork by Robert Pirtle for https://laniakean.com',
+    '  * Source code: https://github.com/PirtleShell/AladinLite */'
+  ].join('\n') + '\n';
   return gulp.src('./dist/aladin.js')
     .pipe(uglify())
+    .pipe(insert.prepend(copyright))
     .pipe(rename('aladin.min.js'))
     .pipe(gulp.dest('./dist/'));
 });
