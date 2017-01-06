@@ -3796,16 +3796,16 @@ CooConversion = (function() {
 
 /******************************************************************************
  * Aladin Lite project
- * 
+ *
  * File Sesame.js
- * 
+ *
  * Author: Thomas Boch[CDS]
- * 
+ *
  *****************************************************************************/
 
 Sesame = (function() {
     Sesame = {};
-    
+
     Sesame.cache = {};
 
     /** find RA, DEC for any target (object name or position)
@@ -3844,10 +3844,9 @@ Sesame = (function() {
                            );
         }
     };
-    
+
     Sesame.resolve = function(objectName, callbackFunctionSuccess, callbackFunctionError) {
-        //var sesameUrl = "http://cdsportal.u-strasbg.fr/services/sesame?format=json";
-        var sesameUrl = "http://cds.u-strasbg.fr/cgi-bin/nph-sesame.jsonp?";
+        var sesameUrl = "https://laniakean.com/api/v1/resolveNames/?";
         $.ajax({
             url: sesameUrl ,
             data: {"object": objectName},
@@ -3864,10 +3863,9 @@ Sesame = (function() {
             error: callbackFunctionError
             });
     };
-    
+
     return Sesame;
 })();
-
 
 // Copyright 2013 - UDS/CNRS
 // The Aladin Lite program is distributed under the terms

@@ -16,7 +16,7 @@ An https-served version for production is available [here](https://laniakean.com
 
 ## `Sesame.resolve` relay
 
-`resolveNames.php` contains a script that relays requests to CDS's [Sesame object resolution service](http://cds.u-strasbg.fr/cgi-bin/Sesame). This is a hacky solution, but someday in the near future, CDS will implement implement the service under https protocol.
+`resolveNames.php` contains a script that relays requests to CDS's [Sesame object resolution service](http://cds.u-strasbg.fr/cgi-bin/Sesame). This is a hacky solution, but someday in the near future, CDS will implement implement the service under https protocol. It is currently live [here](https://laniakean.com/api/v1/resolveNames/?) as an endpoint in the [Laniakean API](https://laniakean.com/api#resolve-names-api).
 
 ## License
 

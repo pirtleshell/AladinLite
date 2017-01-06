@@ -4,6 +4,11 @@
 // It simply relays the request to CDS's service Sesame
 // More about Sesame is available here: http://cdsweb.u-strasbg.fr/doc/sesame.htx
 // This way is going to make each request longer, but it works and is only temporary
+//
+// Currently (Jan 2017) live at https://laniakean.com/api/v1/resolveNames/?
+//
+// author: Robert Pirtle <https://pirtle.xyz/>
+// license: MIT
 header('Content-Type: application/javascript');
 header('Access-Control-Allow-Headers: Content-Type');
 header('Access-Control-Allow-Methods: GET');
