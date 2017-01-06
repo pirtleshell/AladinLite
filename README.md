@@ -38,9 +38,9 @@ This and the original are licensed under [GNU GPLv3](http://choosealicense.com/l
 
 ## Currently needed Shims
 
-- [ ] `Sesame.resolve`. Original uses [this url](http://cds.u-strasbg.fr/cgi-bin/nph-sesame.jsonp?). New live SSL mirror available [here](https://laniakean.com/api/v1/resolveNames/?) through the [Laniakean API](https://laniakean.com/api#resolve-names-api).
+- [X] `Sesame.resolve`. Original uses [this url](http://cds.u-strasbg.fr/cgi-bin/nph-sesame.jsonp?). New live SSL mirror available [here](https://laniakean.com/api/v1/resolveNames/?) through the [Laniakean API](https://laniakean.com/api#resolve-names-api).
 
-- [ ] `nph-aladin.pl` which retrieves available surveys. [The original list](http://aladin.u-strasbg.fr/java/nph-aladin.pl?frame=aladinLiteDic). A live SSL version is available [here](https://laniakean.com/data/nph-aladin.json).
+- [X] `nph-aladin.pl` which retrieves available surveys. [The original list](http://aladin.u-strasbg.fr/java/nph-aladin.pl?frame=aladinLiteDic). A live SSL version is available [here](https://laniakean.com/data/nph-aladin.json).
 
 - [ ] default surveys in `HpxImageSurvey.js`
 
