@@ -4,9 +4,28 @@
 
 ## About
 
-This is a copy of AladinLite, a totally awesome telescope imagery viewer developed by the [Centre de Données astronomiques de Strasbourg](http://cds.u-strasbg.fr/) (CDS). I corresponded with them about serving the images over an https protocol, and although they plan on implementing it in the near future, currently, the easy, plug-and-play AladinLite viewer is only available over http. However, they did provide me with links to https images ([JSON](http://alasky.unistra.fr/MocServer/query?hips_service_url*=https*&fields=ID,obs_collection,hips_service_url*&fmt=json) & [human-readable](http://alasky.unistra.fr/MocServer/query?hips_service_url*=https*&fields=ID,obs_collection,hips_service_url*)), so I intend to implement SSL here.
+This is a copy of AladinLite, a totally awesome telescope imagery viewer developed by the [Centre de Données astronomiques de Strasbourg](http://cds.u-strasbg.fr/) (CDS). I corresponded with them about serving the images over an https protocol, and although they plan on implementing it in the near future, currently, the easy, plug-and-play AladinLite viewer is only available over http. However, they did provide me with links to https images ([JSON](http://alasky.unistra.fr/MocServer/query?hips_service_url*=https*&fields=ID,obs_collection,hips_service_url*&fmt=json) & [human-readable](http://alasky.unistra.fr/MocServer/query?hips_service_url*=https*&fields=ID,obs_collection,hips_service_url*)), so I have implemented an SSL version here.
 
-When it's done, you should be able to just take the minimized js and minimized css and use them on an https site without annoying Mixed Content errors.
+## Usage
+
+It works just like the original. The CSS and JS files can be found in the `/dist` directory, so either host them yourself, or use rawgit CDN. The CSS hasn't been modified, so feel free to use [the original](http://aladin.u-strasbg.fr/AladinLite/api/v2/latest/aladin.min.css).
+
+Modified from the [original documentation](http://aladin.u-strasbg.fr/AladinLite/doc/):
+
+```html
+<!-- include Aladin Lite CSS file in the head section of your page -->
+<link rel="stylesheet" href="https://cdn.rawgit.com/PirtleShell/AladinLite/master/dist/aladin.min.css" />
+
+<!-- you can skip the following line if your page already integrates the jQuery library -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js" charset="utf-8"></script>
+
+<!-- insert this snippet where you want Aladin Lite viewer to appear and after the loading of jQuery -->
+<div id="aladin-lite-div" style="width:400px;height:400px;"></div>
+<script type="text/javascript" src="https://cdn.rawgit.com/PirtleShell/AladinLite/master/dist/aladin.min.js" charset="utf-8"></script>
+<script type="text/javascript">
+    var aladin = A.aladin('#aladin-lite-div', {survey: "P/DSS2/color", fov:60});
+</script>
+```
 
 ## Building
 
