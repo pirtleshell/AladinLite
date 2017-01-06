@@ -15,6 +15,8 @@ Compiling the js and css files requires that you have [uglifyjs2](https://github
 npm i -g uglify-js less
 ```
 
+Then run `./build.sh`. The new files will be replace those in `/dist`.
+
 ## License
 
 This and the original are licensed under [GNU GPLv3](http://choosealicense.com/licenses/gpl-3.0/). The original license file can be found [here](https://github.com/PirtleShell/AladinLite/blob/master/COPYING) and [here is the original source code](http://aladin.u-strasbg.fr/AladinLite/doc/#source-code). It is copyrighted by the CDS.
