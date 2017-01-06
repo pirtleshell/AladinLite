@@ -14,19 +14,16 @@
 scriptdir="$( cd "$( dirname "$0" )" && pwd )"
 srcdir=${scriptdir}/src
 
-
-
-
-distribfile=${scriptdir}/aladin.js
-distribfileminified=${scriptdir}/aladin.min.js
+distribfile=${scriptdir}/dist/aladin.js
+distribfileminified=${scriptdir}/dist/aladin.min.js
 
 csssrcfile=${srcdir}/css/aladin.css
-cssfileminified=${scriptdir}/aladin.min.css
+cssfileminified=${scriptdir}/dist/aladin.min.css
 
-uglifyjs="/usr/bin/uglifyjs"
-lessc="/usr/bin/lessc"
+uglifyjs="$(which uglifyjs)"
+lessc="$(which lessc)"
 
-jsfiles=('cds.js' 'json2.js' 'Logger.js' 'jquery.mousewheel.js' 'RequestAnimationFrame.js' 'Stats.js' 'healpix.min.js' 'astroMath.js' 'projection.js' 'coo.js' 'fits.js' 'CooConversion.js' 'Sesame.js' 'HealpixCache.js' 'Utils.js' 'URLBuilder' 'MeasurementTable.js' 'Color.js' 'AladinUtils.js' 'ProjectionEnum.js' 'CooFrameEnum.js' 'Downloader.js' 'CooGrid.js' 'Footprint.js' 'Popup.js' 'Circle.js' 'Polyline.js' 'Overlay.js' 'Source.js' 'ProgressiveCat.js' 'Catalog.js' 'Tile.js' 'TileBuffer.js' 'ColorMap.js' 'HpxKey.js' 'HpxImageSurvey.js' 'HealpixGrid.js' 'Location.js' 'View.js' 'Aladin.js')
+jsfiles=('cds.js' 'json2.js' 'Logger.js' 'jquery.mousewheel.js' 'RequestAnimationFrame.js' 'Stats.js' 'healpix.min.js' 'astroMath.js' 'projection.js' 'coo.js' 'fits.js' 'CooConversion.js' 'Sesame.js' 'HealpixCache.js' 'Utils.js' 'URLBuilder.js' 'MeasurementTable.js' 'Color.js' 'AladinUtils.js' 'ProjectionEnum.js' 'CooFrameEnum.js' 'Downloader.js' 'CooGrid.js' 'Footprint.js' 'Popup.js' 'Circle.js' 'Polyline.js' 'Overlay.js' 'Source.js' 'ProgressiveCat.js' 'Catalog.js' 'Tile.js' 'TileBuffer.js' 'ColorMap.js' 'HpxKey.js' 'HpxImageSurvey.js' 'HealpixGrid.js' 'Location.js' 'View.js' 'Aladin.js')
 
 cmd="cat "
 for t in "${jsfiles[@]}"
