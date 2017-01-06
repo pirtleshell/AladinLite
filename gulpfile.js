@@ -17,9 +17,7 @@ gulp.task('minify-css', function() {
 
 gulp.task('minify-js', function() {
   return gulp.src('./dist/aladin.js')
-    .pipe(uglify({
-      preserveComments: 'license'
-    }))
+    .pipe(uglify())
     .pipe(rename('aladin.min.js'))
     .pipe(gulp.dest('./dist/'));
 });
