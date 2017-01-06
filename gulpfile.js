@@ -1,3 +1,4 @@
+const fs = require('fs');
 const gulp = require('gulp');
 const minifycss = require('gulp-clean-css');
 const uglify = require('gulp-uglify');
@@ -44,14 +45,30 @@ gulp.task('concat-js', function() {
 
 // i have a deploy script that copies it to a testing environment
 gulp.task('deploy', function() {
-  require('child_process').exec('./deploy.sh')
-  return 0;
+  if (fs.existsSync('./deploy.sh')) {
+    require('child_process').exec('./deploy.sh');
+  }
 });
 
-gulp.task('build', function(cb) {
-  runSequence(['concat-js', 'minify-css'], 'minify-js', cb);
+gulp.task('js', function(cb) {
+  runSequence('concat-js', 'minify-js', cb);
+});
+
+gulp.task('deploy-css', function() {
+  runSequence('minify-css', 'deploy');
+});
+
+gulp.task('deploy-js', function() {
+  runSequence('js', 'deploy');
+});
+
+gulp.task('build', ['js', 'minify-css']);
+
+gulp.task('watch', function() {
+  gulp.watch('src/js/*.js', ['deploy-js']);
+  gulp.watch('src/css/*.css', ['deploy-css'])
 });
 
 gulp.task('default', function(cb) {
-  return runSequence('build', 'deploy', cb);
+  return runSequence(['deploy-css', 'deploy-js'], 'watch', cb);
 });

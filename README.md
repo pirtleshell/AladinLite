@@ -19,7 +19,7 @@ cd AladinLite
 npm install
 ```
 
-Now you can build it by running `gulp build`. To live update on changes, just run `gulp`.
+Now you can build it by running `gulp build`. To live update and compile on changes, just run `gulp`.
 
 ### With original build script
 
